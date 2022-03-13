@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#bo{
+    height:100%;
+}
+
+
+.card{
+    width: 444px;
+}
+
+#fo{
+    bottom: 0;
+    width: 100%;
+    position: relative;
+}
+
+#logoI{
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #1b3063;
+}
+
+h2{
+    color: #5891ff;
+}
+
+.card1{
+    margin-left: 5%;
+    margin-top: 5%;
+    width: 230px;
+
+}
+
+
+
+
+
+
+

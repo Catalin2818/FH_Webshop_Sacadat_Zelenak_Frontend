@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="adminDashboard.css">
+    <script language="JavaScript" type="text/javascript" src="adminDashboard.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../NAVIGATION/navigationBar.css">
+    <link rel="stylesheet" type="text/css" href="../NAVIGATION/topBar.css">
+    <script language="JavaScript" type="text/javascript" src="../NAVIGATION/navigationBar.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(function(){
+            $("#navigationBarContent").load("/NAVIGATION/navigationBar.html");
+            $("#topBarContent").load("/NAVIGATION/topBar.html");
+        });
+    </script>
+
+    <title>FH Semester Projekt/WebShop</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="navigationBarContent"></div>
+
+    <div class="main">
+
+        <div id="topBarContent"></div>
+
+        <div class="cardBox">
+            <div class="card">
+                <div>
+                    <div class="numbers">1,042</div>
+                    <div class="cardName">Daily Views</div>
+                </div>
+                <div class="iconBox">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <div class="numbers">180</div>
+                    <div class="cardName">Sales</div>
+                </div>
+                <div class="iconBox">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <div class="numbers">350</div>
+                    <div class="cardName">Comments</div>
+                </div>
+                <div class="iconBox">
+                    <i class="fa fa-comments" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <div class="numbers">€6,548</div>
+                    <div class="cardName">Earnings</div>
+                </div>
+                <div class="iconBox">
+                    <i class="fa fa-eur" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="details">
+            <div class="recentOrders">
+                <div class="cardHeader">
+                    <h2>Recent Orders</h2>
+                    <a href="#" class="btn">View All</a>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Price</td>
+                        <td>Payment</td>
+                        <td>Status</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Wedding cake</td>
+                            <td>€1200</td>
+                            <td>Paid</td>
+                            <td><span class="status pickedUp">Picked up</span></td>
+                        </tr>
+                        <tr>
+                            <td>Birthday cake</td>
+                            <td>€250</td>
+                            <td>Paid</td>
+                            <td><span class="status pickedUp">Picked up</span></td>
+                        </tr>
+                        <tr>
+                            <td>Avengers theme cake</td>
+                            <td>€650</td>
+                            <td>Due</td>
+                            <td><span class="status pending">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>Apple pie</td>
+                            <td>€35</td>
+                            <td>Paid</td>
+                            <td><span class="status pickedUp">Picked up</span></td>
+                        </tr>
+                        <tr>
+                            <td>Orange pie</td>
+                            <td>€25</td>
+                            <td>Paid</td>
+                            <td><span class="status returned">Returned</span></td>
+                        </tr>
+                        <tr>
+                            <td>Arrow theme cake</td>
+                            <td>€1200</td>
+                            <td>Due</td>
+                            <td><span class="status inProgress">In Progress</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="recentCustomers">
+                <div class="cardHeader">
+                    <h2>Recent Customers</h2>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td width="60px"><div class="imgBox"><img src="https://cdn.pixabay.com/photo/2021/10/27/19/09/cat-6748193__340.jpg" ></div></td>
+                            <td><h4>David<br><span>Germany</span></h4></td>
+                        </tr>
+                        <tr>
+                            <td width="60px"><div class="imgBox"><img src="https://cdn.pixabay.com/photo/2021/10/27/19/09/cat-6748193__340.jpg" ></div></td>
+                            <td><h4>Sarah<br><span>Austria</span></h4></td>
+                        </tr>
+                        <tr>
+                            <td width="60px"><div class="imgBox"><img src="https://cdn.pixabay.com/photo/2021/10/27/19/09/cat-6748193__340.jpg" ></div></td>
+                            <td><h4>Chris<br><span>Australia</span></h4></td>
+                        </tr>
+                        <tr>
+                            <td width="60px"><div class="imgBox"><img src="https://cdn.pixabay.com/photo/2021/10/27/19/09/cat-6748193__340.jpg" ></div></td>
+                            <td><h4>Henry<br><span>Amerika</span></h4></td>
+                        </tr>
+                        <tr>
+                            <td width="60px"><div class="imgBox"><img src="https://cdn.pixabay.com/photo/2021/10/27/19/09/cat-6748193__340.jpg" ></div></td>
+                            <td><h4>Sameen<br><span>Israel</span></h4></td>
+                        </tr>
+                        <tr>
+                            <td width="60px"><div class="imgBox"><img src="https://cdn.pixabay.com/photo/2021/10/27/19/09/cat-6748193__340.jpg" ></div></td>
+                            <td><h4>Ralph<br><span>Sweden</span></h4></td>
+                        </tr>
+                        <tr>
+                            <td width="60px"><div class="imgBox"><img src="https://cdn.pixabay.com/photo/2021/10/27/19/09/cat-6748193__340.jpg" ></div></td>
+                            <td><h4>Ameel<br><span>Canada</span></h4></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
