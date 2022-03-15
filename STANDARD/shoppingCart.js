@@ -34,31 +34,36 @@ $(document).ready(function(){
 
 function addProduct(){
 
-    var addProduktNameInput = document.getElementById("addProductName").value;
+    var addUserIdInput = document.getElementById("addUserId").value;
+    var addProductIdInput = document.getElementById("addProductId").value;
+    var addFinishedInput = document.getElementById("addFinished").value;
+
+
+    /*var addProduktNameInput = document.getElementById("addProductName").value;
     var addProduktHerkunftInput = document.getElementById("addProductOrigin").value;
     var addProduktBeschrInput = document.getElementById("addProductDesc").value;
     var addProduktAllergeneInput = document.getElementById("addProductAllergens").value;
     var addProduktPreisInput = document.getElementById("addProductPrice").value;
     var addProduktStueckanzahlInput = document.getElementById("addProductQuantity").value;
     var addProduktKategorieInput = document.getElementById("addProductCategory").value;
-    var addProduktAgbeholtInput = document.getElementById("addProductPickup").value;
+    var addProduktAgbeholtInput = document.getElementById("addProductPickup").value;*/
 
-    var products = '{'
+    var shoppingCart = '{'
         //+'"id": 1,'
-        +'"productName":"' +addProduktNameInput+'",'
-        +'"productOrigin":"' +addProduktHerkunftInput+'",'
-        +'"productDesc":"' +addProduktBeschrInput+'",'
-        +'"productAllergens": "'+addProduktAllergeneInput+'",'
+        +'"user":"' +addUserIdInput+'",'
+        +'"products":"' +addProductIdInput+'",'
+        +'"finished":"' +addFinishedInput+'",'
+        /*+'"productAllergens": "'+addProduktAllergeneInput+'",'
         +'"productPrice": '+addProduktPreisInput+','
         +'"productQuantity": '+addProduktStueckanzahlInput+','
         +'"productCategory": "'+addProduktKategorieInput+'",'
-        +'"productPickup": "'+addProduktAgbeholtInput +'"'
+        +'"productPickup": "'+addProduktAgbeholtInput +'"'*/
         +'}';
 
     $.ajax({
         type:"POST",
-        url:"http://localhost:8080/product/addProducts",
-        data:products,
+        url:"http://localhost:8080/cart/addToShoppingCart",
+        data:shoppingCart,
         authorization: "Bearer {token}",
         //dataType:'json',
         contentType:"application/json",
@@ -75,22 +80,17 @@ function getAllProducts(){
 
     $.ajax({
         type:"GET",
-        url:"http://localhost:8080/product/getAllProducts",
+        url:"http://localhost:8080/cart/getWholeShoppingCart",
         //contentType: 'application/json; charset=utf-8',
         success:function(data){console.log(data);
 
            const jsonObj = JSON.parse(data);
 
-            jsonObj.product.forEach((productInfo,index) =>{
-                console.log(`${index} : ${productInfo.id}, 
-                                        ${productInfo.productName}, 
-                                        ${productInfo.productOrigin}, 
-                                        ${productInfo.productDesc}, 
-                                        ${productInfo.productAllergens}, 
-                                        ${productInfo.productPrice}, 
-                                        ${productInfo.productQuantity},
-                                        ${productInfo.productCategory},
-                                        ${productInfo.productPickup}`)
+            jsonObj.shoppingCart.forEach((shoppingCartInfo,index) =>{
+                console.log(`${index} : ${shoppingCartInfo.id}, 
+                                        ${shoppingCartInfo.user}, 
+                                        ${shoppingCartInfo.products}, 
+                                        ${shoppingCartInfo.finished}`)
             });
 
             addProductInTable(jsonObj.product);
@@ -103,31 +103,37 @@ function getAllProducts(){
 
 function editProductsInModal(event){
 
-    var editProductIdInput = document.getElementById("editProductID")
-    var editProductNameInput = document.getElementById("editProductName");
-    var editProductOriginInput = document.getElementById("editProductOrigin");
-    var editProductDescInput = document.getElementById("editProductDesc");
-    var editProductAllergensInput = document.getElementById("editProductAllergens");
+    var editShoppingCartIdInput = document.getElementById("editShoppingCartId");
+    var editShoppingCartUserIdInput = document.getElementById("editUserId");
+    var editShoppingCartProductIdInput = document.getElementById("editProductId");
+    var editFinishedInput = document.getElementById("editFinished");
+    /*var editProductAllergensInput = document.getElementById("editProductAllergens");
     var editProductPriceInput = document.getElementById("editProductPrice");
     var editProductQuantityInput = document.getElementById("editProductQuantity");
     var editProductCategoryInput = document.getElementById("editProductCategory");
-    var editProductPickupInput = document.getElementById("editProductPickup");
+    var editProductPickupInput = document.getElementById("editProductPickup");*/
 
-    editProductIdInput.innerText = event.parentNode.parentNode.cells[1].innerHTML;
-    editProductNameInput.value = event.parentNode.parentNode.cells[2].innerHTML;
-    editProductOriginInput.value = event.parentNode.parentNode.cells[3].innerHTML;
-    editProductDescInput.value = event.parentNode.parentNode.cells[4].innerHTML;
-    editProductAllergensInput.value = event.parentNode.parentNode.cells[5].innerHTML;
+    editShoppingCartIdInput.innerText = event.parentNode.parentNode.cells[1].innerHTML;
+    editShoppingCartUserIdInput.value = event.parentNode.parentNode.cells[2].innerHTML;
+    editShoppingCartProductIdInput.value = event.parentNode.parentNode.cells[3].innerHTML;
+    editFinishedInput.value = event.parentNode.parentNode.cells[4].innerHTML;
+    /*editProductAllergensInput.value = event.parentNode.parentNode.cells[5].innerHTML;
     editProductPriceInput.value = event.parentNode.parentNode.cells[6].innerHTML;
     editProductQuantityInput.value = event.parentNode.parentNode.cells[7].innerHTML;
     editProductCategoryInput.value = event.parentNode.parentNode.cells[8].innerHTML;
-    editProductPickupInput.value = event.parentNode.parentNode.cells[9].innerHTML;
+    editProductPickupInput.value = event.parentNode.parentNode.cells[9].innerHTML;*/
 
 }
 
 function editProduct(){
 
-    var editProductIdInput = document.getElementById("editProductID").innerHTML;
+
+    var editShoppingCartIdInput = document.getElementById("editShoppingCartId").innerHTML;
+    var editShoppingCartUserIdInput = document.getElementById("editUserId").innerHTML;
+    var editShoppingCartProductIdInput = document.getElementById("editProductId").innerHTML;
+    var editFinishedInput = document.getElementById("editFinished").value;
+
+    /*var editProductIdInput = document.getElementById("editProductID").innerHTML;
     var editProductNameInput = document.getElementById("editProductName").value;
     var editProductOriginInput = document.getElementById("editProductOrigin").value;
     var editProductDescInput = document.getElementById("editProductDesc").value;
@@ -135,42 +141,38 @@ function editProduct(){
     var editProductPriceInput = document.getElementById("editProductPrice").value;
     var editProductQuantityInput = document.getElementById("editProductQuantity").value;
     var editProductCategoryInput = document.getElementById("editProductCategory").value;
-    var editProductPickupInput = document.getElementById("editProductPickup").value;
+    var editProductPickupInput = document.getElementById("editProductPickup").value;*/
 
 
-    var product ='{'
-        +'"id":' +editProductIdInput +','
-        +'"productName":"' +editProductNameInput+'",'
-        +'"productOrigin":"' +editProductOriginInput+'",'
-        +'"productDesc":"' +editProductDescInput+'",'
-        +'"productAllergens": "'+editProductAllergensInput+'",'
+    var shoppingCartT ='{'
+        +'"id":' +editShoppingCartIdInput +','
+        +'"user":"' +editShoppingCartUserIdInput+'",'
+        +'"product":"' +editShoppingCartProductIdInput+'",'
+        +'"finished":"' +editFinishedInput+'",'
+        /*+'"productAllergens": "'+editProductAllergensInput+'",'
         +'"productPrice": '+editProductPriceInput+','
         +'"productQuantity": '+editProductQuantityInput+','
         +'"productCategory": "'+editProductCategoryInput+'",'
-        +'"productPickup": "'+editProductPickupInput +'"'
+        +'"productPickup": "'+editProductPickupInput +'"'*/
         +'}';
 
     $.ajax({
         type:"POST",
-        url:"http://localhost:8080/product/updateProduct",
-        data:product,
+        url:"http://localhost:8080/cart/updateShoppingCart",
+        data:shoppingCartT,
         dataType: 'json',
         contentType:'application/json; charset=utf-8',
         success:function(data){
 
             const jsonObj = JSON.parse(data);
 
-            jsonObj.product.forEach((productInfo,index) =>{
-                console.log(`${index} : ${productInfo.id}, 
-                                        ${productInfo.productName}, 
-                                        ${productInfo.productOrigin}, 
-                                        ${productInfo.productDesc}, 
-                                        ${productInfo.productAllergens}, 
-                                        ${productInfo.productPrice}, 
-                                        ${productInfo.productQuantity},
-                                        ${productInfo.productCategory},
-                                        ${productInfo.productPickup}`)
+            jsonObj.shoppingCart.forEach((shoppingCartInfo,index) =>{
+                console.log(`${index} : ${shoppingCartInfo.id}, 
+                                        ${shoppingCartInfo.user}, 
+                                        ${shoppingCartInfo.products}, 
+                                        ${shoppingCartInfo.finished}`)
             });
+
             addProductInTable(jsonObj.product);
 
         },
@@ -187,7 +189,7 @@ function deleteProduct(event){
 
     $.ajax({
         type:"GET",
-        url:"http://localhost:8080/product/deleteProduct/"+id,
+        url:"http://localhost:8080/cart/deleteShoppingCart/"+id,
         contentType: 'application/json; charset=utf-8',
         success:function(data){
             getAllProducts();
@@ -197,21 +199,21 @@ function deleteProduct(event){
 
 }
 
-function addProductInTable(productData){
-    var productTable = document.getElementById("productTable");
+function addProductInTable(shoppingCartData){
+    var shoppingCartTable = document.getElementById("shoppingCartTable");
     var productHTML = "";
 
-    productData.forEach((productInfo,index) =>{
-        console.log(`${index} : ${productInfo.id}, ${productInfo.productName}, ${productInfo.productOrigin}, ${productInfo.productDesc}, ${productInfo.productAllergens}, ${productInfo.productPrice}, ${productInfo.productQuantity},${productInfo.productCategory},${productInfo.productPickup}`)
+    shoppingCartData.forEach((shoppingCartInfo,index) =>{
+        console.log(`${index} : ${shoppingCartInfo.id}, ${shoppingCartInfo.user}, ${shoppingCartInfo.products}, ${shoppingCartInfo.finished}`)
 
         productHTML=productHTML + "<tr><td><span className=\"custom-checkbox\"><input type=\"checkbox\" id=\"checkbox1\" name=\"options[]\" value=\"1\"><label htmlFor=\"checkbox1\"></label></span>" +
-            "</td><td>"+ productInfo.id +"</td><td>"+ productInfo.productName +"</td><td>"+ productInfo.productOrigin +"</td><td>"+ productInfo.productDesc +"</td><td>"+ productInfo.productAllergens +"</td><td>"+ productInfo.productPrice +"</td><td>"+productInfo.productQuantity+"</td><td>"+productInfo.ProductCategory+"</td><td>"+productInfo.productPickup+"</td><td>"+
-            "<button type=\"button\" className=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#editEmployeeModal\" onclick='editProductsInModal(this)'><i class=\"fa fa-pencil\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Edit\"></i></button>" +
+            "</td><td>"+ shoppingCartInfo.id +"</td><td>"+ shoppingCartInfo.user +"</td><td>"+ shoppingCartInfo.products +"</td><td>"+ shoppingCartInfo.finished +
+            "<button type=\"button\" className=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#editShoppingCart\" onclick='editProductsInModal(this)'><i class=\"fa fa-pencil\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Edit\"></i></button>" +
             "<button type=\"button\" className=\"btn btn-primary\" onclick=deleteProduct(this)><i class=\"fa fa-trash-o\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Delete\"></i></button>"+
             "</td>" +
             "</tr>";
     });
     console.log(productHTML);
-    productTable.innerHTML= productHTML;
+    shoppingCartTable.innerHTML= shoppingCartHTML;
 }
 

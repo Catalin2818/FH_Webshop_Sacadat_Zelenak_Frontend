@@ -50,7 +50,6 @@
 
 <div class="container" id="mainContainer">
 
-
     <div class="main">
 
         <div class="container">
@@ -61,7 +60,7 @@
                             <h2>Manage <b>Shoppingcart</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEmployeeModal">Add new Product</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addToShoppingCart">Add new Product</button>
                             </div>
                     </div>
                 </div>
@@ -75,18 +74,14 @@
                                </span>
                         </th>
                         <th>ID</th>
-                        <th>Produkt Name</th>
-                        <th>Produkt Origin</th>
-                        <th>Beschreibung</th>
-                        <th>Allergene</th>
-                        <th>Preis</th>
+                        <th>User ID</th>
+                        <th>Produkt ID</th>
                         <th>Stückanzahl</th>
-                        <th>Kategorie</th>
-                        <th>Abgeholt</th>
+                        <th>Bestellt</th>
                     </tr>
                     </thead>
 
-                    <tbody id="productTable">
+                    <tbody id="shoppingCartTable">
 
                     </tbody>
                 </table>
@@ -96,7 +91,7 @@
         </div>
 
 <!--Change to addProductModal-->
-        <div id="addEmployeeModal" class="modal">
+        <div id="addToShoppingCart" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -109,36 +104,16 @@
                             <input id="addID" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Produkt Name</label>
-                            <input id="addProductName" type="text" class="form-control" required>
+                            <label>User ID</label>
+                            <input id="addUserId" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Herkunft</label>
-                            <input id="addProductOrigin" type="text" class="form-control" required>
+                            <label>Produkt ID</label>
+                            <input id="addProductId" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Beschreibung</label>
-                            <input id="addProductDesc" type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Allergene</label>
-                            <input id="addProductAllergens" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Preis</label>
-                            <input id="addProductPrice" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Stückanzahl</label>
-                            <input id="addProductQuantity" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Kategorie</label>
-                            <input id="addProductCategory" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Abgeholt</label>
-                            <input id="addProductPickup" class="form-control" required>
+                            <label>Bestellt</label>
+                            <input id="addFinished" type="email" class="form-control" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -150,50 +125,30 @@
         </div>
 
 <!--Change to editProductModal-->
-        <div id="editEmployeeModal" class="modal">
+        <div id="editShoppingCart" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
-                            <h4 class="modal-title">Edit Products</h4>
+                            <h4 class="modal-title">Edit Shopping Cart</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>ID</label>
-                                <label id="editProductID"></label>
+                                <label id="editShoppingCartId"></label>
                             </div>
                             <div class="form-group">
-                                <label>Produkt Name</label>
-                                <input id="editProductName" type="text" class="form-control" required>
+                                <label>User ID</label>
+                                <input id="editUserId" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Herkunft</label>
-                                <input id="editProductOrigin" type="text" class="form-control" required>
+                                <label>Produkt ID</label>
+                                <input id="editProductId" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Beschreibung</label>
-                                <input id="editProductDesc" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Allergene</label>
-                                <input  id="editProductAllergens" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Preis</label>
-                                <input id="editProductPrice" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Stückanzahl</label>
-                                <input id="editProductQuantity" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Kategorie</label>
-                                <input id="editProductCategory" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Abgeholt</label>
-                                <input id="editProductPickup" type="text" class="form-control" required>
+                                <label>Bestellt</label>
+                                <input id="editFinished" type="text" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">
