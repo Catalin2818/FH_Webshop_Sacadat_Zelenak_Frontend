@@ -23,11 +23,8 @@ $(function () {
       affixCartIcon: true,
       showCheckoutModal: true,
       numberOfDecimals: 2,
-      cartItems: [
-        {id: 1, name: 'product 1', summary: 'summary 1', price: 10, quantity: 1, image: 'images/img_1.png'},
-        {id: 2, name: 'product 2', summary: 'summary 2', price: 20, quantity: 2, image: 'images/img_2.png'},
-        {id: 3, name: 'product 3', summary: 'summary 3', price: 30, quantity: 1, image: 'images/img_3.png'}
-      ],
+      cartItems:  setLocalStorageToCartItems(localStorage.getItem('__mycart')),
+        
       clickOnAddToCart: function($addTocart){
         goToCartIcon($addTocart);
       },
@@ -57,4 +54,27 @@ $(function () {
       $(".row").append('<div class="col-md-3 text-center"><img src="images/img_empty.png" width="150px" height="150px"><br>product ' + currentElementNo + ' - <strong>$' + currentElementNo + '</strong><br><button class="btn btn-danger my-cart-btn" data-id="' + currentElementNo + '" data-name="product ' + currentElementNo + '" data-summary="summary ' + currentElementNo + '" data-price="' + currentElementNo + '" data-quantity="1" data-image="images/img_empty.png">Add to Cart</button><a href="#" class="btn btn-info">Details</a></div>')
     });
   });
+
+function setLocalStorageToCartItems(localStorage) {
+  var stringForCartItems = "";
+  if(localStorage > 1) {
+    var data = $.parseJSON(localStorage);
+    $(data).each(function(i,val)
+    {
+      $.each(val,function(key,val)
+      {
+        if(key == "id") {
+          stringForCartItems += "{id:"+ val +", name: '";
+        } else if(key == "name") {
+          stringForCartItems += val + "', summary: 'summary 1', price: ";
+        } else if(key == "price") {
+          stringForCartItems += val + ", quantity: ";
+        } else if(key == "quantity") {
+          stringForCartItems += val + ", image: 'images/img_1.png'},"
+        }
+      });
+    });
+  }
+  return stringForCartItems;
+}
   
