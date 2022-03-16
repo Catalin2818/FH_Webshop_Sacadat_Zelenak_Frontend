@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>-->
+    
+    <script type="text/javascript" src="scriptRegistration.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugIn-css-js/productCards.css">
+
+    <script>
+        $(function(){
+            $("#navigationBarContentLogedOut").load("/NAVIGATION/navBarLogedOut.html");
+            $("#navigationBarContentLogedInUser").load("/NAVIGATION/navBarLogedInUser.html");
+            $("#navigationBarContentLogedInAdmin").load("/NAVIGATION/navBarLogedInAdmin.html");
+        });
+    </script>
+    <title>FH Semester Projekt/WebShop</title>
+</head>
+
+<body id="bo">
+
+<script>
+    if(sessionStorage.getItem('login') == 'admin') {
+        document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedInAdmin'></div>";
+    } else if(sessionStorage.getItem('login') == 'user') {
+        document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedInUser'></div>";
+    } else {
+        document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedOut'></div>";
+    }
+</script>
+
+<!--
+    data-name
+    data-summary
+    data-id all are jquery attribute 
+-->
+
+<br>
+<div class="container">
+    <h1>Products
+        <div style="float:right; cursor:pointer;">
+        <span class="glyphicon glyphicon-shopping-cart my-cart-icon">
+            <span class="badge badge-notify my-cart-badge"></span>
+        </span></div>
+    </h1>
+
+    <button type="addNewProduct" name="addNewProduct" id="addNewProduct">
+        Add New Product
+    </button>
+    <br><br><br>
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <img src="../img/index.jpg" width="200" height="200" alt="">
+            <br><br>
+            Procudt 1 - <strong>€10</strong>
+            <br><br>
+            <button class="btn btn-danger my-cart-btn" data-id="1" data-name="product 1" data-summary="summyry 1" data-price="10" data-quantity="1" data-image="../img/index.jpg">
+                Add to cart
+            </button>
+            <a href="" class="btn btn-info">Details</a>
+        </div>
+    
+        <div class="col-md-3 text-center">
+            <img src="../img/index.jpg" width="200" height="200" alt="">
+            <br><br>
+            Procudt 2 - <strong>€20</strong>
+            <br><br>
+            <button class="btn btn-danger my-cart-btn" data-id="2" data-name="product 2" data-summary="summyry 2" data-price="20" data-quantity="1" data-image="../img/index.jpg">
+                Add to cart
+            </button>
+            <a href="" class="btn btn-info">Details</a>
+        </div>
+
+        <div class="col-md-3 text-center">
+            <img src="../img/index.jpg" width="200" height="200" alt="">
+            <br><br>
+            Procudt 3 - <strong>€30</strong>
+            <br><br>
+            <button class="btn btn-danger my-cart-btn" data-id="3" data-name="product 3" data-summary="summyry 3" data-price="30" data-quantity="1" data-image="../img/index.jpg">
+                Add to cart
+            </button>
+            <a href="" class="btn btn-info">Details</a>
+        </div>
+
+        <div class="col-md-3 text-center">
+            <img src="../img/index.jpg" width="200" height="200" alt="">
+            <br><br>
+            Procudt 4 - <strong>€40</strong>
+            <br><br>
+            <button class="btn btn-danger my-cart-btn" data-id="4" data-name="product 4" data-summary="summyry 4" data-price="40" data-quantity="1" data-image="../img/index.jpg">
+                Add to cart
+            </button>
+            <a href="" class="btn btn-info">Details</a>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br>
+
+<footer id="fo" class="text-center text-white" style="background-color: #1b3063;">
+    <div class="container p-4 pb-0">
+
+        <p class="d-flex justify-content-center align-items-center">
+            <a class="text-white" href="help.html">Hilfe</a>
+        </p>
+        <p class="d-flex justify-content-center align-items-center">
+            <a class="text-white" href="impressum.html">Impressum</a>
+        </p>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="">Viki's CoffeShop & Bakery</a>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="plugIn-css-js/cartTable.js"></script>
+
+<script src="plugIn-css-js/cart.js"></script>
+</body>
+</html>
