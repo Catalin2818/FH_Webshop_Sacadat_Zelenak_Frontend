@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="indexTryoutCss.css">
+        <title>Index Tryout</title>
+<style>
+        *{
+            margin: 0;
+            outline: none;
+            box-sizing: border-box;
+        }
+        
+        body{
+            background-color: #292C45;
+            font-family: 'Work Sans', sans-serif;
+        }
+        
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 110px;
+            border-bottom: 1px solid #ffffff15;
+        }
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        .menu li a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 24px;
+        }
+        .banner{
+            text-align: center;
+            padding-top: 65px;
+            color: #fff;
+        }
+        .banner-text{
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .banner h1{
+            font-size: 48px;
+            font-weight: 400;
+            font-family: 'Playfair Display', serif;
+        }
+        .banner ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-left: 0;
+        }
+
+        .banner ul li{
+            list-style: none;
+            margin:20px 20px 0;
+            position: relative;
+            font-weight: 300;
+        }
+        .banner ul li:not(:first-child):before{
+            position: absolute;
+            content: '';
+            width: 10px;
+            height: 10px;
+            top: 5px;
+            left: -25px;
+            background-color: #434d90;
+            border-radius: 50px;
+        }
+
+        .earth{
+            position: relative;
+        }
+        .earth-img img{
+           width: 917px; 
+        }
+        .circle{
+            width: 756px;
+            height: 756px;
+            display: inline-block;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            position: absolute;
+            top: 125px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            animation: circle 60s linear 0s infinite;
+        }
+        @keyframes circle {
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        .icon{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            padding: 28px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            background-color: #292c45;
+            transition: all ease 0.5s;
+        }
+        .icon:hover{
+            border-color: #3951e8;
+            background-color: #3951e8;
+            box-shadow: 0 4px 94px #384fde;
+        }
+        .icon:nth-child(1){
+            top: -40px;
+            left: 41%;
+        }
+        .icon:nth-child(2){
+            top: 70px;
+            right: 50px;
+        }
+        .icon:nth-child(3){
+            top: 330px;
+            right: -50px;
+        }
+        .icon:nth-child(4){
+            bottom: 60px;
+            right: 60px;
+        }
+        .icon:nth-child(5){
+            bottom: -40px;
+            right: 41%;
+        }
+        .icon:nth-child(6){
+            bottom: 70px;
+            left: 45px;
+        }
+        .icon:nth-child(7){
+            bottom: 575px;
+            left: 45px;
+        }
+        .icon:nth-child(8){
+            bottom: 320px;
+            left: -55px;
+        }
+        .stone{
+            position: absolute;
+            width: 10px;
+            height: 140px;
+            background:linear-gradient(to top,#384284, transparent);
+            top: 100px;
+            left: 100px;
+            border-radius: 50px;
+            opacity: 0;
+            animation: stone 7s ease 0s infinite;
+        }
+        @keyframes stone {
+            from{
+                transform: translate(-500%);
+                opacity: 1;
+            }
+            to{
+                transform: translateY(500%);
+                opacity: .3 ;
+            }
+            
+        }
+        .stone:nth-child(2){
+            top: 300px;
+            left: 400px;
+            animation-delay: .7s;
+            animation-duration: 6s;
+        }
+        .stone:nth-child(3){
+            top: 500px;
+            left: 200px;
+            animation-delay: .5s;
+            animation-duration: 3s;
+        }
+        .stone:nth-child(4){
+            top: 100px;
+            right: 100px;
+            left: inherit;
+            animation-delay: .2s;
+            animation-duration: 4s;
+        }
+        .stone:nth-child(5){
+            top: 300px;
+            right: 400px;
+            left: inherit;
+            animation-delay: .8s;
+            animation-duration: 7s;
+        }
+        .stone:nth-child(6){
+            top: 500px;
+            right: 200px;
+            left: inherit;
+        }
+        .stone:nth-child(7){
+            top: 0;
+            left: 45%;
+        }
+        .stone:nth-child(even){
+            background:linear-gradient(to top,#384fde, transparent);
+            box-shadow: 0 4px 94px #384fde;
+        }
+    </style>
+    </head>
+    <body>
+        
+        <main>
+            <header>
+                <div class="logo">
+                    <a href="#"><img src="./Icons/earth.png" alt=""></a>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Working</a></li>
+                        <li><a href="#">Activities</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="banner">
+                <div class="aestroid">
+                    <div class="stone"></div>
+                    <div class="stone"></div>
+                    <div class="stone"></div>
+                    <div class="stone"></div>
+                    <div class="stone"></div>
+                    <div class="stone"></div>
+                    <div class="stone"></div>
+                </div>
+                <div class="banner-text">
+                    <h1>Global</h1>
+                    <ul>
+                        <li>Temperature</li>
+                        <li>Frost</li>
+                        <li>Hurry</li>
+                        <li>Health</li>
+                        <li>Sea Level</li>
+                        <li>Weather</li>
+                        <li>Economy</li>
+                    </ul>
+                </div>
+                <div class="earth">
+                    <div class="earth-img">
+                        <img src="./Icons/planet-earth.png" alt="">
+                    </div>
+                    <div class="circle">
+                        <div class="icon"><img src="./Icons/chat.png" alt=""></div>
+                        <div class="icon"><img src="./Icons/chat.png" alt=""></div>
+                        <div class="icon"><img src="./Icons/chat.png" alt=""></div>
+                        <div class="icon"><img src="./Icons/chat.png" alt=""></div>
+                        <div class="icon"><img src="./Icons/earth.png" alt=""></div>
+                        <div class="icon"><img src="./Icons/earth.png" alt=""></div>
+                        <div class="icon"><img src="./Icons/earth.png" alt=""></div>
+                        <div class="icon"><img src="./Icons/earth.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+    </html>
