@@ -30,9 +30,18 @@ body{
     border-top-right-radius: 50px;
     border-bottom-right-radius:50px;
 }
+.container{
+    margin-top: 150px;
+}
+
 .row{
     color: white;
+    margin-top: 150px;
 }
+.text-center{
+    margin-bottom: 30px;
+}
+
 h1{
     color: white;
 }

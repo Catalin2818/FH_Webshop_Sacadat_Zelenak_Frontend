@@ -41,8 +41,8 @@ function getAllProducts(){
   
       productData.forEach((productInfo,index) =>{
           
-          productHTML=productHTML + "<div class=\"col-md-3 text-center\">"+
-          "<img src=\"../img/index.jpg\" width=\"200\" height=\"200\" alt=\"\">"+
+          productHTML=productHTML + "<div class=\"col-lg-3 col-md-4 col-sm-6 col-xs-12 text-center\">"+
+          "<img src=\"../img/index.jpg\" width=\"250\" height=\"250\" alt=\"\">"+
           "<br><br>"+
           productInfo.productName + " - <strong>€ " + productInfo.productPrice + "</strong>"+
           "<br><br>"+
@@ -52,7 +52,6 @@ function getAllProducts(){
           "<a href=\"\" class=\"btn btn-info\">Details</a>"+
           "</div>";
       });
-      //console.log(productHTML);
       productTable.innerHTML= productHTML;
   }
 
