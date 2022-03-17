@@ -35,6 +35,8 @@ function getAllProducts(){
       })
   }
   
+  //TODO CODE in eigene files splitten !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   function addProductInTable(productData){
       var productTable = document.getElementById("productCartView");
       var productHTML = "";
