@@ -1,8 +1,6 @@
 body{
     font-family: sans-serif;
-    background-color: #7f5a83;
-    background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
-    height: 100vh;
+    background-image: linear-gradient(315deg, #f8d8fc 0%, #a1b5c2 74%);
 }
 .badge-notify{
     background: red;
@@ -61,6 +59,7 @@ h1{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    
 }
 .container-fluid{
     padding: 60px 50px;
@@ -68,11 +67,27 @@ h1{
 .logo-small{
     color: aliceblue;
     font-size: 50px;
+    transform-style: preserve-3d;
+    transform: rotateY(360deg) translateZ(310px);
+    animation: animate 10s linear infinite;
 }
 .logo{
     font-size: 200px;
     color:#7f5a83;
+    transform-style: preserve-3d;
+    transform: rotateY(360deg) translateZ(310px);
+    animation: animate 10s linear infinite;
 }
+
+@keyframes animate{
+  0%{
+    transform: perspective(1000px) rotateY(360deg);
+  }
+  100%{
+    transform: perspective(1000px) rotateY(0deg);
+  }
+}
+
 .thumbnail{
     padding: 0 0 15px 0;
     border: none;
@@ -132,7 +147,21 @@ h1{
     -webkit-animation-duration: 1s;
     visibility: visible;
   }
-  
+ 
+svg{
+  height: 200px;
+  width: 100%;
+}
+  path{
+    fill: rgb(161, 181, 194);
+  }
+  /*path:hover{
+    fill:#34495e;
+  }*/
+  .shape-fill{
+    fill: url(#header-shape-gradient) #fff;
+  }
+
   @keyframes slide {
     0% {
       opacity: 0;
