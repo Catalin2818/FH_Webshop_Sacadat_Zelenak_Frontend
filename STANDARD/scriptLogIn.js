@@ -6,11 +6,17 @@ function logInAccount(){
     if(emailInput.length >=1 && passwordInput.length >=1) {
 
         $.ajax({
-            url: 'http://localhost:8080/user/login',
+            url: 'http://localhost:8080/login',
             type: 'POST',
-            data: {
-                email: emailInput,
+            data: JSON.stringify({
+                username: emailInput,
                 password: passwordInput
+            }),
+            xhrFields: {
+                withCredentials: true
+            },
+            headers: {
+                Authorization: 'application/json'
             },
             success: function (response) {
                 location.href = 'index.html';

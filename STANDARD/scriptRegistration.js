@@ -9,18 +9,21 @@ function createAccount(){
         (email.length >=1 && email.match(".+@.+\\.[A-z]{2,4}"))) {
 
         var user = '{'
-            +'"id": 1,'
+            +'"id": 10,'
             +'"firstName":"' +firstName+'",'
             +'"lastName":"' +lastName+'",'
             +'"email":"' +email+'",'
             +'"password": "'+password+'",'
             +'"cart": "1",'
-            +'"role": "user"'
+            +'"role": "user",'
+            +'"enabled": true,'
+            +'"active": true,'
+            +'"loggedIn": false'
             +'}';
 
         $.ajax({
             type:"POST",
-            url:"http://localhost:8080/user/addUser",
+            url:"http://localhost:8080/user/registration",
             data:user,
             dataType:'json',
             contentType:'application/json; charset=utf-8',
