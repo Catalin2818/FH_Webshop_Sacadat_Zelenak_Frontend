@@ -4,14 +4,12 @@ $(document).ready(function(){
   if(checkPage == null) {
     getAllProducts();
   } else {
-    var myidtoinsert = 5;
-    console.log(document.getElementById("link1").href);
-    getSpecificProduct();
+    //getSpecificProduct();
   }
 
 });
 
-function getSpecificProduct(){
+function getSpecificProduct(id){
   console.log("get");
       $.ajax({
           type:"GET",
@@ -90,27 +88,33 @@ function getAllProducts(){
       })
   }
   
-  //TODO CODE in eigene files splitten !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//TODO CODE in eigene files splitten !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-  function addProductInTable(productData){
-      var productTable = document.getElementById("productCartView");
-      var productHTML = "";
-  
-      productData.forEach((productInfo,index) =>{
-          
-          productHTML=productHTML + "<div class=\"col-lg-3 col-md-4 col-sm-6 col-xs-12 text-center\">"+
-          "<img src=\"../img/index.jpg\" width=\"250\" height=\"250\" alt=\"\">"+
-          "<br><br>"+
-          productInfo.productName + " - <strong>€ " + productInfo.productPrice + "</strong>"+
-          "<br><br>"+
-          "<button class=\"btn btn-danger my-cart-btn\" data-id=\"" + productInfo.id + " \" data-name=\"" + productInfo.productName + "\" data-summary=\"summary 1\" data-price=\"" + productInfo.productPrice + "\" data-quantity=\"1\" data-image=\"../img/index.jpg\">"+
-              "Add to cart"+
-          "</button>"+
-          "<a href=\"../ProductWithCart/productDetail&id=.html\" id=\"link1\" class=\"btn btn-info\">Details</a>"+
-          "</div>";
-      });
-      productTable.innerHTML= productHTML;
-  }
+function addProductInTable(productData){
+    var productTable = document.getElementById("productCartView");
+    var productHTML = "";
+
+    productData.forEach((productInfo,index) =>{
+        
+        productHTML=productHTML + "<div class=\"col-lg-3 col-md-4 col-sm-6 col-xs-12 text-center\">"+
+        "<img src=\"../img/index.jpg\" width=\"250\" height=\"250\" alt=\"\">"+
+        "<br><br>"+
+        productInfo.productName + " - <strong>€ " + productInfo.productPrice + "</strong>"+
+        "<br><br>"+
+        "<button class=\"btn btn-danger my-cart-btn\" data-id=\"" + productInfo.id + " \" data-name=\"" + productInfo.productName + "\" data-summary=\"summary 1\" data-price=\"" + productInfo.productPrice + "\" data-quantity=\"1\" data-image=\"../img/index.jpg\">"+
+            "Add to cart"+
+        "</button>"+
+        "<button class=\"btn btn-info\" data-id=\"productInfo.id\" onClick=\"detailsOfProduct(this.getAttribute('data-id'))\">Details</button>" +
+        /*"<a href=\"../ProductWithCart/productDetail.html\" id=\"link1\" class=\"btn btn-info\">Details</a>"+*/
+        "</div>";
+    });
+    productTable.innerHTML= productHTML;
+}
+
+function detailsOfProduct(produtId) {
+  window.location.href = "../ProductWithCart/productDetail.html";
+  getSpecificProduct(productId);
+}
 
 
 (function ($) {
