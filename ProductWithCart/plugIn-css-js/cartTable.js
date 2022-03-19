@@ -106,7 +106,7 @@ function addProductInTable(productData){
         "<button class=\"btn btn-danger my-cart-btn\" data-id=\"" + productInfo.id + " \" data-name=\"" + productInfo.productName + "\" data-summary=\"summary 1\" data-price=\"" + productInfo.productPrice + "\" data-quantity=\"1\" data-image=\"../img/index.jpg\">"+
             "Add to cart"+
         "</button>"+
-        "<button class=\"btn btn-info\" data-id=" + productInfo.id + " onClick=\"detailsOfProduct(this.getAttribute('data-id'))\">Details</button>" +
+        "<button class=\"btn btn-info\" onClick=\"detailsOfProduct(" + productInfo.id +")\">Details</button>" +
         /*"<a href=\"../ProductWithCart/productDetail.html\" id=\"link1\" class=\"btn btn-info\">Details</a>"+*/
         "</div>";
     });
