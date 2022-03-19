@@ -1,8 +1,63 @@
 $(document).ready(function(){
   console.log(localStorage.getItem("__mycart"));
-  getAllProducts();
+  var checkPage = document.getElementById("productDetail");
+  if(checkPage == null) {
+    getAllProducts();
+  } else {
+    var myidtoinsert = 5;
+    console.log(document.getElementById("link1").href);
+    getSpecificProduct();
+  }
 
 });
+
+function getSpecificProduct(){
+  console.log("get");
+      $.ajax({
+          type:"GET",
+          url:"http://localhost:8080/product/getSpecificProduct/" + id,
+          contentType: 'application/json; charset=utf-8',
+          success:function(data){//console.log(data);
+  
+             const jsonObj = JSON.parse(data);
+  
+              jsonObj.product.forEach((productInfo,index) =>{
+                 /* console.log(`${index} : ${productInfo.id}, 
+                                          ${productInfo.productName}, 
+                                          ${productInfo.productOrigin}, 
+                                          ${productInfo.productDesc}, 
+                                          ${productInfo.productAllergens}, 
+                                          ${productInfo.productPrice}, 
+                                          ${productInfo.productQuantity},
+                                          ${productInfo.productCategory},
+                                          ${productInfo.productPickup},
+                                          ${productInfo.image}`)*/
+              });
+  
+              addProductInTable(jsonObj.product);
+             // console.log(data);
+          },
+          failure: function(errMsg){alert(errMsg);}
+  
+      })
+  }
+
+function addProductToDetail(productData) {
+  var productDetail = document.getElementById("productDetailView");
+  var productHTML = "";
+
+  productData.forEach((productInfo,index) =>{
+          
+    productHTML=productHTML + "<h2 class = \"product-title\">" + productInfo.productName + "</h2>" +
+        "<div class = \"product-price\"><p class = \"new-price\">New Price: <span>" + productInfo.productPrice + "</span></p></div>" +
+        "<div class = \"product-detail\"><h2>about this item: </h2><p>" + productInfo.productDesc + "</p>" +
+        "<div class = \"product-category\"><p>Category: <span>" + productInfo.productCategory + "</span></p></div> " +
+        "<div class = \"purchase-info\"><input type = \"number\" min = \"0\" value = \"1\">" +
+        "<button type = \"button\" class = \"btn btn-secondary btn-lg active\" onclick=\"addProductInTable\">Add to cart</button>" +
+        "<a href=\"../ProductWithCart/ProductPage.html\" class=\"btn btn-secondary btn-lg active\" role=\"button\"" +
+        "aria-pressed=\"true\">Back to products</a></div>"
+  });
+}
 
 function getAllProducts(){
   console.log("get");
@@ -51,7 +106,7 @@ function getAllProducts(){
           "<button class=\"btn btn-danger my-cart-btn\" data-id=\"" + productInfo.id + " \" data-name=\"" + productInfo.productName + "\" data-summary=\"summary 1\" data-price=\"" + productInfo.productPrice + "\" data-quantity=\"1\" data-image=\"../img/index.jpg\">"+
               "Add to cart"+
           "</button>"+
-          "<a href=\"../ProductWithCart/productDetail.html\" class=\"btn btn-info\">Details</a>"+
+          "<a href=\"../ProductWithCart/productDetail&id=.html\" id=\"link1\" class=\"btn btn-info\">Details</a>"+
           "</div>";
       });
       productTable.innerHTML= productHTML;

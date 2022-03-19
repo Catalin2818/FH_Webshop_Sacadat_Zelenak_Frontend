@@ -81,7 +81,7 @@
     </h1>
 </div>
 
-<div class = "card-wrapper">
+<div class = "card-wrapper" id="productDetail">
     <div class = "card">
       <div class = "product-imgs">
         <div class = "img-display">
@@ -115,27 +115,8 @@
           </div>
         </div>
       </div>
-      <div class = "product-content">
-        <h2 class = "product-title">${{productInfo.productName}}</h2>
-        <div class = "product-price">
-          <p class = "new-price">New Price: <span>${{product-price}}</span></p>
-        </div>
-  
-        <div class = "product-detail">
-          <h2>about this item: </h2>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione in, vero repudiandae ea dolor voluptatem.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum iusto et tenetur excepturi aliquid ad.</p>
-          <ul>
-            <li>Available: <span>in stock</span></li>
-            <li>Category: <span>Cake</span></li>
-          </ul>
-        </div>
-  
-        <div class = "purchase-info">
-          <input type = "number" min = "0" value = "1">
-          <button type = "button" class = "btn btn-secondary btn-lg active" onclick="addProductInTable">Add to cart</button>
-          <a href="../ProductWithCart/ProductPage.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back to products</a>
-        </div>
+      <div class = "product-content" id="productDetailView">
+        
   
       </div>
     </div>
