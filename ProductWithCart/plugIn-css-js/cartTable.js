@@ -1,10 +1,12 @@
+var detailPage = 0;
+
 $(document).ready(function(){
   console.log(localStorage.getItem("__mycart"));
   var checkPage = document.getElementById("productDetail");
   if(checkPage == null) {
     getAllProducts();
   } else {
-    //getSpecificProduct();
+    getSpecificProduct(detailPage);
   }
 
 });
@@ -112,8 +114,8 @@ function addProductInTable(productData){
 }
 
 function detailsOfProduct(produtId) {
+  detailPage = productId;
   window.location.href = "../ProductWithCart/productDetail.html";
-  getSpecificProduct(productId);
 }
 
 
