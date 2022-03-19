@@ -51,7 +51,7 @@ function getAllProducts(){
           "<button class=\"btn btn-danger my-cart-btn\" data-id=\"" + productInfo.id + " \" data-name=\"" + productInfo.productName + "\" data-summary=\"summary 1\" data-price=\"" + productInfo.productPrice + "\" data-quantity=\"1\" data-image=\"../img/index.jpg\">"+
               "Add to cart"+
           "</button>"+
-          "<a href=\"\" class=\"btn btn-info\">Details</a>"+
+          "<a href=\"../ProductWithCart/productDetail.html\" class=\"btn btn-info\">Details</a>"+
           "</div>";
       });
       productTable.innerHTML= productHTML;
@@ -285,7 +285,7 @@ function getAllProducts(){
           '</div>' +
           '<div class="modal-footer">' +
           '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
-          '<button type="button" class="btn btn-primary ' + classCheckoutCart + '">Checkout</button>' +
+          '<button type="button" class="btn btn-secondary ' + classCheckoutCart + '">Checkout</button>' +
           '</div>' +
           '</div>' +
           '</div>' +

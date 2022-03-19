@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <link rel="stylesheet" href="../ProductWithCart/productDetails/productDetail.css">
+  <style>
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+  </style>
+
+<script>
+      const imgs = document.querySelectorAll('.img-select a');
+        const imgBtns = [...imgs];
+            let imgId = 1;
+
+        imgBtns.forEach((imgItem) => {
+            imgItem.addEventListener('click', (event) => {
+            event.preventDefault();
+                imgId = imgItem.dataset.id;
+                slideImage();
+            });
+        });
+
+        function slideImage(){
+            const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
+
+            document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+        }
+        window.addEventListener('resize', slideImage);
+</script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container slideanim">
+    <h1 style="text-align: center;">Products
+        <div style="float:right; cursor:pointer;">
+        <span class="glyphicon glyphicon-shopping-cart my-cart-icon">
+            <span class="badge badge-notify my-cart-badge"></span>
+        </span></div>
+    </h1>
+</div>
+
+<div class = "card-wrapper">
+    <div class = "card">
+      <div class = "product-imgs">
+        <div class = "img-display">
+          <div class = "img-showcase">
+            <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
+            <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
+            <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
+            <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
+          </div>
+        </div>
+        <div class = "img-select">
+          <div class = "img-item">
+            <a href = "#" data-id = "1">
+              <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
+            </a>
+          </div>
+          <div class = "img-item">
+            <a href = "#" data-id = "2">
+              <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
+            </a>
+          </div>
+          <div class = "img-item">
+            <a href = "#" data-id = "3">
+              <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
+            </a>
+          </div>
+          <div class = "img-item">
+            <a href = "#" data-id = "4">
+              <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class = "product-content">
+        <h2 class = "product-title">${{productInfo.productName}}</h2>
+        <div class = "product-price">
+          <p class = "new-price">New Price: <span>${{product-price}}</span></p>
+        </div>
+  
+        <div class = "product-detail">
+          <h2>about this item: </h2>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione in, vero repudiandae ea dolor voluptatem.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum iusto et tenetur excepturi aliquid ad.</p>
+          <ul>
+            <li>Available: <span>in stock</span></li>
+            <li>Category: <span>Cake</span></li>
+          </ul>
+        </div>
+  
+        <div class = "purchase-info">
+          <input type = "number" min = "0" value = "1">
+          <button type = "button" class = "btn btn-secondary btn-lg active" onclick="addProductInTable">Add to cart</button>
+          <a href="../ProductWithCart/ProductPage.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back to products</a>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <script src="plugIn-css-js/cartTable.js"></script>
+
+  <script src="plugIn-css-js/cart.js"></script>
+
+</body>
+</html>
