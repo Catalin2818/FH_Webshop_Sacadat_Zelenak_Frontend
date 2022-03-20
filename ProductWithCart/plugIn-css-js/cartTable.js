@@ -6,9 +6,36 @@ $(document).ready(function(){
     getSpecificProduct(localStorage["productId"]);
   } else {
     getAllProducts();
+    getAllCategories();
   }
 
 });
+
+function getAllCategories() {
+  $.ajax({
+    type:"GET",
+    url:"http://localhost:8080/category/getAllCategories",
+    contentType: 'application/json; charset=utf-8',
+    success:function(data){
+      const jsonObj = JSON.parse(data);
+      addCategoriesToDropdown(jsonObj.category);
+    },
+    failure: function(errMsg){alert(errMsg);}
+
+})
+
+}
+
+function addCategoriesToDropdown(categoryData) {
+  var categoryDetail = document.getElementById("categoryDropdown");
+  var categoryHTML="";
+
+  categoryData.forEach((categoryInfo,index) =>{
+
+    categoryHTML = categoryHTML +"<li><a href=\"#\">" + categoryInfo.categoryName + "</a></li>";
+  });
+  categoryDetail.innerHTML=categoryHTML;            
+}
 
 function getSpecificProduct(id){
   console.log("get");

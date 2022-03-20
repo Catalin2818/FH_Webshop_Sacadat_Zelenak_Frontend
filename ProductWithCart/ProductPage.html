@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -40,8 +40,25 @@
 </head>
 
 <body id="bo"  data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+      </nav>
   
-            <script>
+            <!--<script>
                 if(sessionStorage.getItem('login') == 'admin') {
                     document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedInAdmin'></div>";
                 } else if(sessionStorage.getItem('login') == 'user') {
@@ -49,27 +66,31 @@
                 } else {
                     document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedOut'></div>";
                 }
-            </script>
+            </script>-->
 
     <div class="jumbotron">
         <h1>Backery & Coffe Shop</h1>
         <p>Best Breakfast in Town!</p>
     </div>
-
-
         <div class="container slideanim">
-            <h1 style="text-align: center;">Products
-                <div style="float:right; cursor:pointer;">
-                <span class="glyphicon glyphicon-shopping-cart my-cart-icon">
+            <h1 style="text-align: left;">Products
+                <div style="float:right; cursor:pointer;">  
+                    <span class="glyphicon glyphicon-shopping-cart my-cart-icon">
                     <span class="badge badge-notify my-cart-badge"></span>
-                </span></div>
+                    </span>
+                </div>
             </h1>
-
-
+            <div class="dropdown col-lg-12 col-md-12 col-sm-12" style="text-align:left; margin-bottom: 30px;">
+                <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Categories
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu " style="text-align:left; margin-bottom: 30px;" id="categoryDropdown">
+                  
+                </ul>
+              </div>
             <div class="row" id="productCartView"></div>
         </div>
 
-        <footer id="fo" class="text-center text-white" style="background-color: #1b3063;">
+        <!--<footer id="fo" class="text-center text-white" style="background-color: #1b3063;">
             <div class="container p-4 pb-0">
 
                 <p class="d-flex justify-content-center align-items-center">
@@ -86,7 +107,7 @@
                 © 2021 Copyright:
                 <a class="text-white" href="">Viki's CoffeShop & Bakery</a>
             </div>
-        </footer>
+        </footer>-->
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 

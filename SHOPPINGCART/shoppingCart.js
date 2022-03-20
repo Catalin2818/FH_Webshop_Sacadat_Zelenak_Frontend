@@ -1,9 +1,7 @@
 $(document).ready(function(){
 
-    // Activate tooltip
     $('[data-toggle="tooltip"]').tooltip();
 
-    // Select/Deselect checkboxes
     var checkbox = $('table tbody input[type="checkbox"]');
     $("#selectAll").click(function()
     {
@@ -39,7 +37,7 @@ function addProduct(){
     var addFinishedInput = document.getElementById("addFinished").value;
 
     var shoppingCart = '{'
-        //+'"id": 1,'
+        //+'"id": 0,'
         +'"user":"' +addUserIdInput+'",'
         +'"products":"' +addProductIdInput+'",'
         +'"finished":"' +addFinishedInput+'",'
