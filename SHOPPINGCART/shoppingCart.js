@@ -32,16 +32,42 @@ $(document).ready(function(){
 
 function addProduct(){
 
+    var addIDInput = document.getElementById("addID").value;
     var addUserIdInput = document.getElementById("addUserId").value;
     var addProductIdInput = document.getElementById("addProductId").value;
+    var addProductQuantityInput = document.getElementById("addProductQuantity").value;
     var addFinishedInput = document.getElementById("addFinished").value;
 
-    var shoppingCart = '{'
-        //+'"id": 0,'
-        +'"user":"' +addUserIdInput+'",'
-        +'"products":"' +addProductIdInput+'",'
-        +'"finished":"' +addFinishedInput+'",'
+    if(addIDInput == "") {
+        addIDInput = 0;
+    }
+
+    var user = '{'
+        +'"id":'+addUserIdInput +','
+        +'"firstName":"",'
+        +'"lastName":"",'
+        +'"email":"",'
+        +'"password": "",'
+        +'"cart": "",'
+        +'"role": "user",'
+        +'"enabled":true,"active":true,"loggedIn":false'
         +'}';
+    var cardProducts = '[{'
+        +'"id": 0,'
+        +'"productQuantity":'+addProductQuantityInput +','
+        +'"shoppingCart": 0,'
+        +'"productId":'+addProductIdInput
+        +'}]';
+
+    var shoppingCart = '{'
+        +'"id": ' + addIDInput + ','
+        +'"user": ' + user + ','
+        +'"cardProducts":' + cardProducts + ','
+        +'"productQuantity":1,'
+        +'"finished":' +addFinishedInput
+        +'}';
+
+        console.log(shoppingCart);
 
     $.ajax({
         type:"POST",
@@ -69,15 +95,21 @@ function getAllProducts(){
 
            const jsonObj = JSON.parse(data);
 
-            jsonObj.shoppingCart.forEach((shoppingCartInfo,index) =>{
+            /*jsonObj.forEach((shoppingCartInfo,index) =>{
                 console.log(`${index} : ${shoppingCartInfo.id}, 
-                                        ${shoppingCartInfo.user}, 
-                                        ${shoppingCartInfo.products}, 
+                                        ${shoppingCartInfo.user.id}, 
+                                        ${shoppingCartInfo.cardProducts},
+                                        ${shoppingCartInfo.productQuantity},
                                         ${shoppingCartInfo.finished}`)
-            });
+                shoppingCartInfo.cardProducts.forEach((cardProducts, index) => {
+                    console.log(`${index} : ${cardProducts.id}, 
+                                        ${cardProducts.productId}, 
+                                        ${cardProducts.shoppingCart},
+                                        ${cardProducts.productQuantity}`)
+                });
+            });*/
 
-            addProductInTable(jsonObj.product);
-            console.log(data);
+            addProductInTable(jsonObj);
         },
         failure: function(errMsg){alert(errMsg);}
     })
@@ -135,7 +167,6 @@ function editProduct(){
     });
 }
 
-
 function deleteProduct(event){
 
     var id = event.parentNode.parentNode.cells[1].innerHTML;
@@ -154,19 +185,25 @@ function deleteProduct(event){
 
 function addProductInTable(shoppingCartData){
     var shoppingCartTable = document.getElementById("shoppingCartTable");
+    var shoppingCartHTML = "";
+    var leftSideOfProductHTML = "";
     var productHTML = "";
+    var rightSideOfInfoHTML = "";
 
     shoppingCartData.forEach((shoppingCartInfo,index) =>{
         console.log(`${index} : ${shoppingCartInfo.id}, ${shoppingCartInfo.user}, ${shoppingCartInfo.products}, ${shoppingCartInfo.finished}`)
 
-        productHTML=productHTML + "<tr><td><span className=\"custom-checkbox\"><input type=\"checkbox\" id=\"checkbox1\" name=\"options[]\" value=\"1\"><label htmlFor=\"checkbox1\"></label></span>" +
-            "</td><td>"+ shoppingCartInfo.id +"</td><td>"+ shoppingCartInfo.user +"</td><td>"+ shoppingCartInfo.products +"</td><td>"+ shoppingCartInfo.finished +
-            "<button type=\"button\" className=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#editShoppingCart\" onclick='editProductsInModal(this)'><i class=\"fa fa-pencil\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Edit\"></i></button>" +
-            "<button type=\"button\" className=\"btn btn-primary\" onclick=deleteProduct(this)><i class=\"fa fa-trash-o\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Delete\"></i></button>"+
-            "</td>" +
-            "</tr>";
+        leftSideOfProductHTML="<tr><td><span className=\"custom-checkbox\"><input type=\"checkbox\" id=\"checkbox1\" name=\"options[]\" value=\"1\"><label htmlFor=\"checkbox1\"></label></span>" +
+            "</td><td>"+ shoppingCartInfo.id +"</td><td>"+ shoppingCartInfo.user.id +"</td><td>";
+            
+        rightSideOfInfoHTML = "</td><td>"+ shoppingCartInfo.finished + "</td>"+
+        "</tr>"; 
+
+        shoppingCartInfo.cardProducts.forEach((cardProducts, index) => {
+            shoppingCartHTML = shoppingCartHTML + leftSideOfProductHTML + cardProducts.productId +"</td><td>" + cardProducts.productQuantity + rightSideOfInfoHTML;
+        });
     });
-    console.log(productHTML);
+    
     shoppingCartTable.innerHTML= shoppingCartHTML;
 }
 

@@ -44,7 +44,7 @@ function addProduct(){
     var addProduktAgbeholtInput = document.getElementById("addProductPickup").value;
 
     var products = '{'
-        //+'"id": 1,'
+        +'"id": 0,'
         +'"productName":"' +addProduktNameInput+'",'
         +'"productOrigin":"' +addProduktHerkunftInput+'",'
         +'"productDesc":"' +addProduktBeschrInput+'",'
