@@ -141,7 +141,7 @@ function editUser(){
             });
 
             addUserInTable(jsonObj.user);
-            //TODO close modal
+        
         },
         failure: function(errMsg){alert(errMsg);}
     });
