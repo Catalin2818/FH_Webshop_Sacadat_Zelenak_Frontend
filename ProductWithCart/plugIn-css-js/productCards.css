@@ -54,7 +54,7 @@ h1{
 /*styling for newIndex.html landingpage tryout*/
 
 .jumbotron{
-    background-color: darkslategray;
+  margin-top: 0;
     color: white;
     text-align: center;
     padding: 150px;
@@ -64,7 +64,13 @@ h1{
     background-size: cover;
     height: 800px;
     width: 100%;
+    position: relative;
 }
+.navbar{
+  margin-bottom: 50px;
+  border-radius: 0;
+}
+
 #about{
   margin-left: 30px;
 }
@@ -84,7 +90,7 @@ h1{
     font-size: 200px;
     color:#7f5a83;
     transform-style: preserve-3d;
-    transform: rotateY(360deg) translateZ(310px);
+    transform: rotateY(360deg) translateZ(360px);
     animation: animate 10s linear infinite;
 }
 
@@ -164,9 +170,7 @@ svg{
   path{
     fill: rgb(161, 181, 194);
   }
-  /*path:hover{
-    fill:#34495e;
-  }*/
+
   .shape-fill{
     fill: url(#header-shape-gradient) #fff;
   }
@@ -198,4 +202,5 @@ svg{
         text-align: center;
         margin: 25px 0;
     }
+    
 }
