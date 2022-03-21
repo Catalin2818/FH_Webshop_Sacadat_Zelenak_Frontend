@@ -113,15 +113,16 @@ function addProductInTable(productData){
 function sendFinishedRequest() {
   $.ajax({
     type:"GET",
-    url:"http://localhost:8080/product/getAllProducts",
-    //contentType: 'application/json; charset=utf-8',
+    url:"http://localhost:8080/cart/setShoppingCartFinished/" + localStorage["userId"],
+    contentType: 'application/json',
+    authorization: "Bearer {token}",
     success:function(data){
-      const jsonObj = JSON.parse(data); 
-      addProductInTable(jsonObj.product);
+      return true;
     },
-    failure: function(errMsg){alert(errMsg);}
-
-})
+    failure: function(errMsg){
+      return false;
+    }
+  })
 }
 
 function detailsOfProduct(productId) {
@@ -484,10 +485,14 @@ function detailsOfProduct(productId) {
         updateCart();
         var isCheckedOut = options.checkoutCart(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());
         if (isCheckedOut !== false) {
-          ProductManager.clearProduct();
-          $cartBadge.text(ProductManager.getTotalQuantity());
-          $("#" + idCartModal).modal("hide");
-          sendFinishedRequest();
+          if(!sendFinishedRequest()) {
+            ProductManager.clearProduct();
+            $cartBadge.text(ProductManager.getTotalQuantity());
+            $("#" + idCartModal).modal("hide");
+            localStorage["__mycart"] = "";
+          } else {
+            console.log("something went wrong");
+          }
         }
       });
     
