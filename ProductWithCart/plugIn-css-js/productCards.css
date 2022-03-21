@@ -45,7 +45,6 @@ body{
 .text-center{
     margin-bottom: 30px;
 }
-/*style="color:rgb(76, 34, 124); margin-top: 20%; font-size: 40px; font-family:Snell Roundhand;"*/
 
 h1{
     color: white;
@@ -403,7 +402,7 @@ footer ul li{
    padding:5px 0px;
 }
 
-.adress span , .contact span , .social span{
+.adress span , .contact span , .info span{
   color: #FFF; 
   font-weight: 800; 
   padding-bottom: 25px; 
@@ -414,7 +413,7 @@ footer ul li{
   letter-spacing: 3px;
 }
 
-.adress li p , .contact li a , .social li a{
+.adress li p , .contact li a , .info li a{
    color:#FFF;
    letter-spacing: 2px;
    text-decoration:none;
@@ -425,7 +424,7 @@ footer ul li{
    float:left;
 }
 
-.adress , .contact , .social {
+.adress , .contact , .info {
    list-style: none;
 }
 
