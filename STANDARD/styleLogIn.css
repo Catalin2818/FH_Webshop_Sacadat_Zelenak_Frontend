@@ -1,3 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Pinyon+Script);
+@import url(https://fonts.googleapis.com/css?family=Pinyon+Script);
+
+
 #bo{
     height:100%
 }
@@ -88,6 +92,45 @@
 .logIn-form .social-icons a:hover{
     text-decoration: none;
     opacity: 0.6;
+}
+
+footer{
+    background-color: #33383c;
+    padding:5px;
+    
+}	       
+
+footer ul li{
+   padding:5px 0px;
+}
+
+.adress span , .contact span , .info span{
+  color: #FFF; 
+  font-weight: 800; 
+  padding-bottom: 25px; 
+  margin-bottom: 10px;
+  display: block;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+
+.adress li p , .contact li a , .info li a{
+   color:#FFF;
+   letter-spacing: 2px;
+   text-decoration:none;
+   font-size:15px;
+}
+
+
+.adress , .contact , .info {
+   list-style: none;
+}
+
+.fa{
+   color:#9c9c9c;
+   margin-right: 15px;
+   font-size:14px;
 }
 
 @media (max-width: 576px) {
