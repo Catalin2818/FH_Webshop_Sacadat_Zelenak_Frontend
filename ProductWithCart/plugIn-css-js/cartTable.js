@@ -110,6 +110,20 @@ function addProductInTable(productData){
     productTable.innerHTML= productHTML;
 }
 
+function sendFinishedRequest() {
+  $.ajax({
+    type:"GET",
+    url:"http://localhost:8080/product/getAllProducts",
+    //contentType: 'application/json; charset=utf-8',
+    success:function(data){
+      const jsonObj = JSON.parse(data); 
+      addProductInTable(jsonObj.product);
+    },
+    failure: function(errMsg){alert(errMsg);}
+
+})
+}
+
 function detailsOfProduct(productId) {
   localStorage["productId"] = productId;
   window.location.href = "../ProductWithCart/productDetail.html";
@@ -473,6 +487,7 @@ function detailsOfProduct(productId) {
           ProductManager.clearProduct();
           $cartBadge.text(ProductManager.getTotalQuantity());
           $("#" + idCartModal).modal("hide");
+          sendFinishedRequest();
         }
       });
     
