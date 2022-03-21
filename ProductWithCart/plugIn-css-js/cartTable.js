@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  console.log(localStorage.getItem("__mycart"));
   var checkPage = document.getElementById("productDetail");
   if(checkPage != null && checkPage.innerHTML.indexOf("productDetailView") >= -1) {
     
@@ -7,9 +6,66 @@ $(document).ready(function(){
   } else {
     getAllProducts();
     getAllCategories();
+    //getCompleteShoppingCart();
+    
+  
+    console.log(localStorage.getItem("__mycart"));
   }
 
 });
+
+function getCompleteShoppingCart() {
+  localStorage["__mycart"] = "[";
+  $.ajax({async: false,  
+    type:"GET",
+    url:"http://localhost:8080/cart/getUnfinishedShoppingCartOfUser/" + localStorage["userId"],
+    contentType: 'application/json; charset=utf-8',
+    success:function(data){
+      const jsonObj = JSON.parse(data);
+      jsonObj[0].cardProducts.forEach((productInfo, index) => {
+        getMoreProductInfo(productInfo.productId, productInfo.productQuantity);
+      });
+
+    },
+    failure: function(errMsg){alert(errMsg);}
+
+  })
+}
+
+function getMoreProductInfo(productId, quantity) {
+  $.ajax({async: false,    
+    type:"GET",
+    url:"http://localhost:8080/product/getSpecificProduct/" + productId,
+    contentType: 'application/json; charset=utf-8',
+    success:function(data){
+      const jsonObj = JSON.parse(data);
+      var products = [];
+      products.push({
+        id: jsonObj.product[0].id,
+        name: jsonObj.product[0].productName,
+        summary: 1,
+        price: jsonObj.product[0].productPrice,
+        quantity: quantity,
+        image: "../img/index.jpg"
+      });
+      //localStorage["__mycart"] =  localStorage["__mycart"]
+      localStorage["__mycart"] +=JSON.stringify(products)
+      /*+ "{"
+      +  "\"id\":\"" + jsonObj.product[0].id + "\","
+      +  "\"name\":\"" + jsonObj.product[0].productName + "\","
+      +  "\"summary\":\"1\","
+      +  "\"price\":\"" + jsonObj.product[0].productPrice + "\","
+      +  "\"quantity\":\"" + quantity + "\","
+      +  "\"image\":\"../img/index.jpg\""
+      +  "},";*/
+      localStorage["__mycart"] = localStorage["__mycart"].replaceAll("[[","[").replaceAll("]]","]").replaceAll("][",",");
+
+    },
+    failure: function(errMsg){alert(errMsg);}
+
+  })
+
+}
 
 function getAllCategories() {
   $.ajax({
@@ -22,7 +78,7 @@ function getAllCategories() {
     },
     failure: function(errMsg){alert(errMsg);}
 
-})
+  })
 
 }
 
@@ -152,6 +208,8 @@ function detailsOfProduct(productId) {
 
 
 (function ($) {
+  
+  getCompleteShoppingCart();
 
     "use strict";
     
@@ -251,6 +309,7 @@ function detailsOfProduct(productId) {
       */
       var getAllProducts = function () {
         try {
+          
           var products = JSON.parse(localStorage[STORAGE_NAME]);
           return products;
         } catch (e) {

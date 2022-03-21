@@ -46,7 +46,30 @@ function getUserId(emailInput) {
             const jsonObj = JSON.parse(data); 
             localStorage["login"] = jsonObj.role;
             localStorage["userId"] = jsonObj.id;
-            location.href = 'index.html';
+            getShoppingCartId(jsonObj.id);
+        },
+        error: function (e) {
+            alertM.innerHTML = e.responseText;
+        }
+    })
+}
+
+function getShoppingCartId(userId) {
+    $.ajax({
+        url: 'http://localhost:8080/cart/getUnfinishedShoppingCartOfUser/' + userId,
+        type: 'GET',
+        xhrFields: {
+            withCredentials: true
+        },
+        headers: {
+            Authorization: 'application/json'
+        },
+        success: function (data) {
+            if(data != undefined) {
+            const jsonObj = JSON.parse(data); 
+                localStorage["shoppingCartId"] = jsonObj[0].id;
+            }
+            location.href = '../ProductWithCart/newIndex.html';
         },
         error: function (e) {
             alertM.innerHTML = e.responseText;
