@@ -19,10 +19,7 @@ function logInAccount(){
                 Authorization: 'application/json'
             },
             success: function (response) {
-                location.href = 'index.html';
-                console.log("success");
-
-                sessionStorage.setItem('login', response);
+                getUserId(emailInput);
             },
             error: function (e) {
                 alertM.innerHTML = e.responseText;
@@ -33,4 +30,26 @@ function logInAccount(){
         alertM.innerHTML="Benutzername oder Passwort ist falsch";
         console.log(alertM);
     }
+}
+
+function getUserId(emailInput) {
+    $.ajax({
+        url: 'http://localhost:8080/user/getUserWithEmail/' + emailInput,
+        type: 'GET',
+        xhrFields: {
+            withCredentials: true
+        },
+        headers: {
+            Authorization: 'application/json'
+        },
+        success: function (data) {
+            const jsonObj = JSON.parse(data); 
+            localStorage["login"] = jsonObj.role;
+            localStorage["userId"] = jsonObj.id;
+            location.href = 'index.html';
+        },
+        error: function (e) {
+            alertM.innerHTML = e.responseText;
+        }
+    })
 }
