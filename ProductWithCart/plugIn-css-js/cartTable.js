@@ -32,24 +32,42 @@ function addCategoriesToDropdown(categoryData) {
 
   categoryData.forEach((categoryInfo,index) =>{
 
-    categoryHTML = categoryHTML +"<li><a href=\"#\">" + categoryInfo.categoryName + "</a></li>";
+    categoryHTML = categoryHTML +"<li><a href=\"javascript:callCategorie('" + categoryInfo.categoryName + "');\">" + categoryInfo.categoryName + "</a></li>";
   });
   categoryDetail.innerHTML=categoryHTML;            
 }
 
+function callCategorie(category) {
+  console.log(category); 
+  $.ajax({
+    type:"GET",
+    url:"http://localhost:8080/product/getAllProductsOfCategory/" + category,
+    contentType: 'application/json; charset=utf-8',
+    success:function(data){
+      const jsonObj = JSON.parse(data);
+      addProductInTable(jsonObj.product);
+    },
+    error: function(errMsg){
+      var productTable = document.getElementById("productCartView");
+      productTable.innerHTML = "There are no products in category " + category;  
+    }
+
+})
+}
+
 function getSpecificProduct(id){
   console.log("get");
-      $.ajax({
-          type:"GET",
-          url:"http://localhost:8080/product/getSpecificProduct/" + id,
-          contentType: 'application/json; charset=utf-8',
-          success:function(data){
-            const jsonObj = JSON.parse(data);
-            addProductToDetail(jsonObj.product);
-          },
-          failure: function(errMsg){alert(errMsg);}
-  
-      })
+  $.ajax({
+      type:"GET",
+      url:"http://localhost:8080/product/getSpecificProduct/" + id,
+      contentType: 'application/json; charset=utf-8',
+      success:function(data){
+        const jsonObj = JSON.parse(data);
+        addProductInTable(jsonObj.product);
+      },
+      failure: function(errMsg){alert(errMsg);}
+
+  })
   }
 
 function addProductToDetail(productData) {
@@ -72,6 +90,7 @@ function addProductToDetail(productData) {
   });
   
   productDetail.innerHTML= productHTML;
+  
 }
 
 function getAllProducts(){
@@ -91,6 +110,7 @@ function getAllProducts(){
   
 function addProductInTable(productData){
     var productTable = document.getElementById("productCartView");
+    productTable.innerHTML = "";
     var productHTML = "";
 
     productData.forEach((productInfo,index) =>{
