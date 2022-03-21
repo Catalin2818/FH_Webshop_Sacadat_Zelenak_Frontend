@@ -18,9 +18,9 @@
 
     <script>
         $(function(){
-            $("#navigationBarContentLogedOut").load("/NAVIGATION/navBarLogedOut.html");
-            $("#navigationBarContentLogedInUser").load("/NAVIGATION/navBarLogedInUser.html");
-            $("#navigationBarContentLogedInAdmin").load("/NAVIGATION/navBarLogedInAdmin.html");
+            $("#navigationBarContentLogedOut").load("/NAVIGATION/navBarLogedOutB3.html");
+            $("#navigationBarContentLogedInUser").load("/NAVIGATION/navBarLogedInUserB3.html");
+            $("#navigationBarContentLogedInAdmin").load("/NAVIGATION/navBarLogedInAdminB3.html");
         });
     </script>
     <script>
@@ -40,31 +40,18 @@
 </head>
 
 
-    <body>
+    <body id="bo">
 
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-            </button>
-            <p class="logoText">HB</p>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="../ProductWithCart/newIndex.html">Home</a></li>
 
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                <li><a href="../STANDARD/Registrieren.html"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
-                <li><a href="../STANDARD/logIn.html"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <script>
+        if(sessionStorage.getItem('login') == 'admin') {
+            document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedInAdmin'></div>";
+        } else if(sessionStorage.getItem('login') == 'user') {
+            document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedInUser'></div>";
+        } else {
+            document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedOut'></div>";
+        }
+    </script>
   
       
       <div class="container text-center">    
@@ -91,15 +78,7 @@
       
       
   
-            <!--<script>
-                if(sessionStorage.getItem('login') == 'admin') {
-                    document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedInAdmin'></div>";
-                } else if(sessionStorage.getItem('login') == 'user') {
-                    document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedInUser'></div>";
-                } else {
-                    document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedOut'></div>";
-                }
-            </script>-->
+           
 
         <div class="container slideanim">
             <h1 style="text-align: left;">Products
@@ -127,16 +106,19 @@
                       <ul class="adress">
                            <span>Adress</span>    
                            <li>
-                              <p>Lorem ipsum dolor sit amet, vero omnis vocibus</p>
-                            </li>
-                                 
-                            <li>
-                              <p>+90 1234 56789</p>
-                            </li>
-                                 
-                            <li>
-                              <p>info@gmail.com</p>
-                            </li>
+                            <p>Heavenstreet 16</p>
+                          </li>
+                          <li>
+                            <p>Österreich 1170 Wien</p>
+                          </li>
+                               
+                          <li>
+                            <p>0664/78965412</p>
+                          </li>
+                               
+                          <li>
+                            <p>office@heavencoffeeshop-wien.at</p>
+                          </li>
                        </ul>
                   </div>
                   
