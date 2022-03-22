@@ -90,7 +90,7 @@ function addCategoriesToDropdown(categoryData) {
 
     categoryHTML = categoryHTML +"<li><a href=\"javascript:callCategorie('" + categoryInfo.categoryName + "');\">" + categoryInfo.categoryName + "</a></li>";
   });
-  categoryDetail.innerHTML=categoryHTML;            
+  categoryDetail.innerHTML= categoryHTML;            
 }
 
 function callCategorie(category) {
@@ -119,7 +119,7 @@ function getSpecificProduct(id){
       contentType: 'application/json; charset=utf-8',
       success:function(data){
         const jsonObj = JSON.parse(data);
-        addProductInTable(jsonObj.product);
+        addProductToDetail(jsonObj.product);
       },
       failure: function(errMsg){alert(errMsg);}
 
@@ -136,11 +136,9 @@ function addProductToDetail(productData) {
         "<div class = \"product-price\"><p class = \"new-price\">New Price: <span>" + productInfo.productPrice + "</span></p></div>" +
         "<div class = \"product-detail\"><h2>about this item: </h2><p>" + productInfo.productDesc + "</p>" +
         "<div class = \"product-category\"><p>Category: <span>" + productInfo.productCategory + "</span></p></div> " +
-        "<div class = \"purchase-info\"><input type = \"number\" min = \"0\" value = \"1\">" +
+        
         //"<button type = \"button\" class = \"btn btn-secondary btn-lg active\" onclick=\"addProductInTable\">Add to cart</button>" +
-        "<button class=\"btn btn-danger my-cart-btn\" data-id=\"" + productInfo.id + " \" data-name=\"" + productInfo.productName + "\" data-summary=\"summary 1\" data-price=\"" + productInfo.productPrice + "\" data-quantity=\"1\" data-image=\"../img/index.jpg\">"+
-            "Add to cart"+
-        "</button>"+
+        
         "<a href=\"../ProductWithCart/ProductPage.html\" class=\"btn btn-secondary btn-lg active\" role=\"button\"" +
         "aria-pressed=\"true\">Back to products</a></div>"
   });

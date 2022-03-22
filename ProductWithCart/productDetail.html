@@ -56,44 +56,17 @@
 
 <body id="bo">
   <script>
-    if(sessionStorage.getItem('login') == 'admin') {
+    if(localStorage.getItem('login') == 'admin') {
         document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedInAdmin'></div>";
-    } else if(sessionStorage.getItem('login') == 'user') {
+    } else if(localStorage.getItem('login') == 'user') {
         document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedInUser'></div>";
     } else {
         document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedOut'></div>";
     }
 </script>
 
-  <div class="container text-center">    
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="">
-            <p class="titleText" >Heavenly</p>
-           </div>
-      </div>
-     
-      <div class="col-sm-6">
-        <div class="">
-         <p class="titleText">Bakery</p>
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="">
-         <p class="titleText">& Coffe Shop</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-<div class="container slideanim">
-    <h1 style="text-align: center;">Products
-        <div style="float:right; cursor:pointer;">
-        <span class="glyphicon glyphicon-shopping-cart my-cart-icon">
-            <span class="badge badge-notify my-cart-badge"></span>
-        </span></div>
-    </h1>
-</div>
+
+
 
 <div class = "card-wrapper" id="productDetail">
     <div class = "card">
@@ -106,7 +79,7 @@
             <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
           </div>
         </div>
-        <div class = "img-select">
+        <!--<div class = "img-select">
           <div class = "img-item">
             <a href = "#" data-id = "1">
               <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
@@ -127,7 +100,7 @@
               <img src = "../ProductWithCart/plugIn-css-js/cake.png" alt = "shoe image">
             </a>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class = "product-content" id="productDetailView">
         

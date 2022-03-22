@@ -64,7 +64,7 @@ img{
 
 .product-price{
     margin: 1rem 0;
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 700;
 }
 .product-price span{
@@ -79,7 +79,7 @@ img{
     padding-bottom: 0.6rem;
 }
 .product-detail p{
-    font-size: 0.9rem;
+    font-size: 2rem;
     padding: 0.3rem;
     opacity: 0.8;
 }
