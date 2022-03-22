@@ -7,8 +7,8 @@ function createAccount(){
 
     if(email.length >=1 && password.length >=1 &&
         (email.length >=1 && email.match(".+@.+\\.[A-z]{2,4}") &&
-        !firstName.contains(" ") && !lastName.contains(" ") &&
-        !email.contains(" ") && !password.contains(" "))) {
+        !firstName.includes(" ") && !lastName.includes(" ") &&
+        !email.includes(" ") && !password.includes(" "))) {
 
         var user = '{'
             +'"id": 10,'

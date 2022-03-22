@@ -42,7 +42,7 @@
 <body id="bo">
 
 <script>
-    if(sessionStorage.getItem('login') == 'admin') {
+    if(localStorage.getItem('login') == 'admin') {
         document.getElementById('bo').innerHTML = "<div id='navigationBarContentLogedInAdmin'></div>";
     } else {
         location.href = '../STANDARD/logIn.html';
