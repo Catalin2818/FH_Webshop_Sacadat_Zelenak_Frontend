@@ -1,9 +1,7 @@
 $(document).ready(function(){
 
-    // Activate tooltip
     $('[data-toggle="tooltip"]').tooltip();
 
-    // Select/Deselect checkboxes
     var checkbox = $('table tbody input[type="checkbox"]');
     $("#selectAll").click(function()
     {
@@ -40,7 +38,7 @@ function addUser(){
     var addPasswortInput = document.getElementById("addPasswort").value;
 
     var user = '{'
-        +'"id": 1,'
+        +'"id": 0,'
         +'"firstName":"' +addVornameInput+'",'
         +'"lastName":"' +addNachnameInput+'",'
         +'"email":"' +addEmailInput+'",'
@@ -51,7 +49,7 @@ function addUser(){
 
     $.ajax({
         type:"POST",
-        url:"http://localhost:8080/user/addUser",
+        url:"http://localhost:8080/user/addUsers",
         data:user,
         dataType:'json',
         contentType:'application/json; charset=utf-8',
@@ -63,7 +61,7 @@ function addUser(){
             });
 
             addUserInTable(jsonObj.user);
-
+            //getAllUsers();
             //TODO close modal
              },
         failure: function(errMsg){alert(errMsg);}
@@ -75,14 +73,20 @@ function getAllUsers(){
 
     $.ajax({
         type:"GET",
-        url:"http://localhost:8080/user/getAllUser",
+        url:"http://localhost:8080/user/getAllUsers",
         contentType: 'application/json; charset=utf-8',
         success:function(data){console.log(data);
 
             const jsonObj = JSON.parse(data);
 
             jsonObj.user.forEach((userInfo,index) =>{
-                console.log(`${index} : ${userInfo.id}, ${userInfo.firstName}, ${userInfo.lastName}, ${userInfo.email}, ${userInfo.password}, ${userInfo.cart}, ${userInfo.role}`)
+                console.log(`${index} : ${userInfo.id}, 
+                                        ${userInfo.firstName}, 
+                                        ${userInfo.lastName}, 
+                                        ${userInfo.email}, 
+                                        ${userInfo.password}, 
+                                        ${userInfo.cart}, 
+                                        ${userInfo.role}`)
             });
 
             addUserInTable(jsonObj.user);

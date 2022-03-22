@@ -64,7 +64,7 @@ function addProduct(){
         contentType:"application/json",
         success:function(data){alert("success");
             getAllProducts();
-            //TODO close modal
+            
         },
         failure: function(errMsg){alert(errMsg);}
     });
