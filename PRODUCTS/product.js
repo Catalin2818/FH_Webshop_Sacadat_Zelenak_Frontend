@@ -34,6 +34,7 @@ $(document).ready(function(){
 
 function addProduct(){
 
+    var addProduktImageInput = document.getElementById("addProductImage").value;
     var addProduktNameInput = document.getElementById("addProductName").value;
     var addProduktHerkunftInput = document.getElementById("addProductOrigin").value;
     var addProduktBeschrInput = document.getElementById("addProductDesc").value;
@@ -52,7 +53,8 @@ function addProduct(){
         +'"productPrice": '+addProduktPreisInput+','
         +'"productQuantity": '+addProduktStueckanzahlInput+','
         +'"productCategory": "'+addProduktKategorieInput+'",'
-        +'"productPickup": "'+addProduktAgbeholtInput +'"'
+        +'"productPickup": "'+addProduktAgbeholtInput +'",'
+        +'"image":"' +addProduktImageInput+'"'
         +'}';
 
     $.ajax({
@@ -60,6 +62,9 @@ function addProduct(){
         url:"http://localhost:8080/product/addProducts",
         data:products,
         authorization: "Bearer {token}",
+        xhrFields:{
+            withCredentials:true
+        },
         //dataType:'json',
         contentType:"application/json",
         success:function(data){alert("success");
@@ -75,14 +80,20 @@ function getAllProducts(){
 
     $.ajax({
         type:"GET",
-        url:"http://localhost:8080/product/getAllProducts",
+        url:"http://localhost:8080/product/admin/getAllProducts",
         //contentType: 'application/json; charset=utf-8',
-        success:function(data){console.log(data);
+        
+        xhrFields:{
+            withCredentials:true
+        },
+        success:function(data){
+            //console.log(data);
 
            const jsonObj = JSON.parse(data);
 
-            jsonObj.product.forEach((productInfo,index) =>{
-                console.log(`${index} : ${productInfo.id}, 
+            /*jsonObj.product.forEach((productInfo,index) =>{
+                console.log(`${index} : ${productInfo.id},
+                                        ${productInfo.productImage},  
                                         ${productInfo.productName}, 
                                         ${productInfo.productOrigin}, 
                                         ${productInfo.productDesc}, 
@@ -91,10 +102,10 @@ function getAllProducts(){
                                         ${productInfo.productQuantity},
                                         ${productInfo.productCategory},
                                         ${productInfo.productPickup}`)
-            });
+            });*/
 
             addProductInTable(jsonObj.product);
-            console.log(data);
+            //console.log(data);
         },
         failure: function(errMsg){alert(errMsg);}
 
@@ -103,7 +114,8 @@ function getAllProducts(){
 
 function editProductsInModal(event){
 
-    var editProductIdInput = document.getElementById("editProductID")
+    var editProductIdInput = document.getElementById("editProductID");
+    var editProductImageInput = document.getElementById("editProductImage");
     var editProductNameInput = document.getElementById("editProductName");
     var editProductOriginInput = document.getElementById("editProductOrigin");
     var editProductDescInput = document.getElementById("editProductDesc");
@@ -122,12 +134,14 @@ function editProductsInModal(event){
     editProductQuantityInput.value = event.parentNode.parentNode.cells[7].innerHTML;
     editProductCategoryInput.value = event.parentNode.parentNode.cells[8].innerHTML;
     editProductPickupInput.value = event.parentNode.parentNode.cells[9].innerHTML;
+    editProductImageInput.value = event.parentNode.parentNode.cells[10].innerHTML.replaceAll("G:\\CAT\\desktop\\BackendImages\\","");
 
 }
 
 function editProduct(){
 
     var editProductIdInput = document.getElementById("editProductID").innerHTML;
+    var editProductImageInput = document.getElementById("editProductImage").value;
     var editProductNameInput = document.getElementById("editProductName").value;
     var editProductOriginInput = document.getElementById("editProductOrigin").value;
     var editProductDescInput = document.getElementById("editProductDesc").value;
@@ -147,7 +161,8 @@ function editProduct(){
         +'"productPrice": '+editProductPriceInput+','
         +'"productQuantity": '+editProductQuantityInput+','
         +'"productCategory": "'+editProductCategoryInput+'",'
-        +'"productPickup": "'+editProductPickupInput +'"'
+        +'"productPickup": "'+editProductPickupInput +'",'
+        +'"image": "'+editProductImageInput +'"'
         +'}';
 
     $.ajax({
@@ -156,11 +171,14 @@ function editProduct(){
         data:product,
         dataType: 'json',
         contentType:'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){
 
             const jsonObj = JSON.parse(data);
 
-            jsonObj.product.forEach((productInfo,index) =>{
+            /*jsonObj.product.forEach((productInfo,index) =>{
                 console.log(`${index} : ${productInfo.id}, 
                                         ${productInfo.productName}, 
                                         ${productInfo.productOrigin}, 
@@ -170,7 +188,7 @@ function editProduct(){
                                         ${productInfo.productQuantity},
                                         ${productInfo.productCategory},
                                         ${productInfo.productPickup}`)
-            });
+            });*/
             addProductInTable(jsonObj.product);
 
         },
@@ -189,6 +207,9 @@ function deleteProduct(event){
         type:"GET",
         url:"http://localhost:8080/product/deleteProduct/"+id,
         contentType: 'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){
             getAllProducts();
         },
@@ -202,16 +223,16 @@ function addProductInTable(productData){
     var productHTML = "";
 
     productData.forEach((productInfo,index) =>{
-        console.log(`${index} : ${productInfo.id}, ${productInfo.productName}, ${productInfo.productOrigin}, ${productInfo.productDesc}, ${productInfo.productAllergens}, ${productInfo.productPrice}, ${productInfo.productQuantity},${productInfo.productCategory},${productInfo.productPickup}`)
+        //console.log(`${index} : ${productInfo.id}, ${productInfo.productName}, ${productInfo.productOrigin}, ${productInfo.productDesc}, ${productInfo.productAllergens}, ${productInfo.productPrice}, ${productInfo.productQuantity},${productInfo.productCategory},${productInfo.productPickup}`)
 
         productHTML=productHTML + "<tr><td><span className=\"custom-checkbox\"><input type=\"checkbox\" id=\"checkbox1\" name=\"options[]\" value=\"1\"><label htmlFor=\"checkbox1\"></label></span>" +
-            "</td><td>"+ productInfo.id +"</td><td>"+ productInfo.productName +"</td><td>"+ productInfo.productOrigin +"</td><td>"+ productInfo.productDesc +"</td><td>"+ productInfo.productAllergens +"</td><td>"+ productInfo.productPrice +"</td><td>"+productInfo.productQuantity+"</td><td>"+productInfo.ProductCategory+"</td><td>"+productInfo.productPickup+"</td><td>"+
+            "</td><td>"+ productInfo.id +"</td><td>"+ productInfo.productName +"</td><td>"+ productInfo.productOrigin +"</td><td>"+ productInfo.productDesc +"</td><td>"+ productInfo.productAllergens +"</td><td>"+ productInfo.productPrice +"</td><td>"+productInfo.productQuantity+"</td><td>"+productInfo.ProductCategory+"</td><td>"+productInfo.productPickup+"</td><td>"+ productInfo.image +"</td><td>"+
             "<button type=\"button\" className=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#editEmployeeModal\" onclick='editProductsInModal(this)'><i class=\"fa fa-pencil\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Edit\"></i></button>" +
             "<button type=\"button\" className=\"btn btn-primary\" onclick=deleteProduct(this)><i class=\"fa fa-trash-o\" aria-hidden=\"true\" data-toggle=\"tooltip\" title=\"Delete\"></i></button>"+
             "</td>" +
             "</tr>";
     });
-    console.log(productHTML);
+    //console.log(productHTML);
     productTable.innerHTML= productHTML;
 }
 

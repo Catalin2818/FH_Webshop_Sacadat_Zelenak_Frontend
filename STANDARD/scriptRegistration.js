@@ -28,6 +28,9 @@ function createAccount(){
             url:"http://localhost:8080/user/registration",
             data:user,
             contentType:'application/json',
+            xhrFields:{
+                withCredentials:true
+            },
             success:function(data){
 console.log(data);
                 location.href = 'logIn.html';

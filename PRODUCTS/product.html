@@ -24,6 +24,8 @@
     <link rel="stylesheet" type="text/css" href="product.css">
     <script language="JavaScript" type="text/javascript" src="product.js"></script>
 
+    <script language="JavaScript" type="text/javascript" src="../NAVIGATION/scriptLogout.js"></script>
+
 
     <script>
         $(function(){
@@ -84,6 +86,7 @@
                         <th>Stückanzahl</th>
                         <th>Kategorie</th>
                         <th>Abgeholt</th>
+                        <th>Image</th>
                     </tr>
                     </thead>
 
@@ -139,6 +142,10 @@
                             <label>Abgeholt</label>
                             <input id="addProductPickup" class="form-control" required>
                         </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input id="addProductImage" type="text" class="form-control" required>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -193,6 +200,10 @@
                             <div class="form-group">
                                 <label>Abgeholt</label>
                                 <input id="editProductPickup" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input id="editProductImage" type="text" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">

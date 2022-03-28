@@ -74,6 +74,9 @@ function addProduct(){
         url:"http://localhost:8080/cart/addToShoppingCart",
         data:shoppingCart,
         authorization: "Bearer {token}",
+        xhrFields:{
+            withCredentials:true
+        },
         //dataType:'json',
         contentType:"application/json",
         success:function(data){alert("success");
@@ -91,6 +94,9 @@ function getAllProducts(){
         type:"GET",
         url:"http://localhost:8080/cart/getWholeShoppingCart",
         //contentType: 'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){console.log(data);
 
            const jsonObj = JSON.parse(data);
@@ -149,6 +155,9 @@ function editProduct(){
         data:shoppingCartT,
         dataType: 'json',
         contentType:'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){
 
             const jsonObj = JSON.parse(data);
@@ -176,6 +185,9 @@ function deleteProduct(event){
         type:"GET",
         url:"http://localhost:8080/cart/deleteShoppingCart/"+id,
         contentType: 'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){
             getAllProducts();
         },

@@ -5,7 +5,7 @@ body{
   margin: 0;
   padding: 0;
     font-family: sans-serif;
-    background-image: linear-gradient(315deg, #111877 50%, #111877 50%);
+    background-image: linear-gradient(315deg, #8e92e9 60%, #b4b5c7 50%);
 }
 
 .badge-notify{
@@ -68,6 +68,8 @@ h1{
 }
 
 /*styling for newIndex.html landingpage tryout*/
+
+
 
 
 .navbar{
@@ -244,6 +246,47 @@ h1{
   .shape-fill{
     fill: url(#header-shape-gradient) #fff;
   }*/
+
+  .parallax {
+    background-image: url("../Project_img/bakeryShop3.png");
+    min-height: 800px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .parallaxTwo {
+    background-image: url("../Project_img/bakery3.png");
+    min-height: 600px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .parallaxThree {
+    background-image: url("../Project_img/bakery5.png");
+    min-height: 600px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .parallaxFour {
+    background-image: url("../Project_img/bakery7.png");
+    min-height: 600px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .parallaxFive {
+    background-image: url("../Project_img/bakery9.png");
+    min-height: 600px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
   @keyframes slide {
     0% {

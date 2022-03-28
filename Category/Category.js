@@ -46,6 +46,9 @@ function addCategory(){
         data:user,
         dataType:'json',
         contentType:'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){
             const jsonObj = JSON.parse(data);
 
@@ -68,6 +71,9 @@ function getAllCategories(){
         type:"GET",
         url:"http://localhost:8080/category/getAllCategories",
         contentType: 'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){console.log(data);
 
             const jsonObj = JSON.parse(data);
@@ -110,6 +116,9 @@ function editCategoryFunc(){
         data:category,
         dataType:'json',
         contentType:'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){
 
             const jsonObj = JSON.parse(data);
@@ -134,6 +143,9 @@ function deleteCategory(event){
         type:"GET",
         url:"http://localhost:8080/category/admin/deleteCategory/"+id,
         contentType: 'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){
             getAllCategories();
         },

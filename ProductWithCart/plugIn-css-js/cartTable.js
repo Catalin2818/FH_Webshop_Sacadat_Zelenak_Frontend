@@ -20,6 +20,9 @@ function getCompleteShoppingCart() {
     type:"GET",
     url:"http://localhost:8080/cart/getUnfinishedShoppingCartOfUser/" + localStorage["userId"],
     contentType: 'application/json; charset=utf-8',
+    xhrFields:{
+        withCredentials:true
+    },
     success:function(data){
       const jsonObj = JSON.parse(data);
       jsonObj[0].cardProducts.forEach((productInfo, index) => {
@@ -37,6 +40,9 @@ function getMoreProductInfo(productId, quantity) {
     type:"GET",
     url:"http://localhost:8080/product/getSpecificProduct/" + productId,
     contentType: 'application/json; charset=utf-8',
+    xhrFields:{
+        withCredentials:true
+    },
     success:function(data){
       const jsonObj = JSON.parse(data);
       var products = [];
@@ -72,6 +78,9 @@ function getAllCategories() {
     type:"GET",
     url:"http://localhost:8080/category/getAllCategories",
     contentType: 'application/json; charset=utf-8',
+    xhrFields:{
+        withCredentials:true
+    },
     success:function(data){
       const jsonObj = JSON.parse(data);
       addCategoriesToDropdown(jsonObj.category);
@@ -99,6 +108,9 @@ function callCategorie(category) {
     type:"GET",
     url:"http://localhost:8080/product/getAllProductsOfCategory/" + category,
     contentType: 'application/json; charset=utf-8',
+    xhrFields:{
+        withCredentials:true
+    },
     success:function(data){
       const jsonObj = JSON.parse(data);
       addProductInTable(jsonObj.product);
@@ -117,6 +129,9 @@ function getSpecificProduct(id){
       type:"GET",
       url:"http://localhost:8080/product/getSpecificProduct/" + id,
       contentType: 'application/json; charset=utf-8',
+      xhrFields:{
+          withCredentials:true
+      },
       success:function(data){
         const jsonObj = JSON.parse(data);
         addProductToDetail(jsonObj.product);
@@ -208,6 +223,9 @@ function sendFinishedRequest() {
     url:"http://localhost:8080/cart/setShoppingCartFinished/" + localStorage["userId"],
     contentType: 'application/json',
     authorization: "Bearer {token}",
+    xhrFields:{
+        withCredentials:true
+    },
     success:function(data){
       return true;
     },

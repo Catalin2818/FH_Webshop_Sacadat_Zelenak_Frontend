@@ -53,6 +53,9 @@ function addUser(){
         data:user,
         dataType:'json',
         contentType:'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){
             const jsonObj = JSON.parse(data);
 
@@ -75,6 +78,9 @@ function getAllUsers(){
         type:"GET",
         url:"http://localhost:8080/user/getAllUsers",
         contentType: 'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){console.log(data);
 
             const jsonObj = JSON.parse(data);
@@ -136,6 +142,9 @@ function editUser(){
         data:user,
         dataType:'json',
         contentType:'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){
 
             const jsonObj = JSON.parse(data);
@@ -160,6 +169,9 @@ function deleteUser(event){
         type:"GET",
         url:"http://localhost:8080/user/deleteUser/"+id,
         contentType: 'application/json; charset=utf-8',
+        xhrFields:{
+            withCredentials:true
+        },
         success:function(data){
             getAllUsers();
         },
