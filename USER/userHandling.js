@@ -79,7 +79,7 @@ function getAllUsers(){
 
             const jsonObj = JSON.parse(data);
 
-            jsonObj.user.forEach((userInfo,index) =>{
+            /*jsonObj.forEach((userInfo,index) =>{
                 console.log(`${index} : ${userInfo.id}, 
                                         ${userInfo.firstName}, 
                                         ${userInfo.lastName}, 
@@ -87,9 +87,9 @@ function getAllUsers(){
                                         ${userInfo.password}, 
                                         ${userInfo.cart}, 
                                         ${userInfo.role}`)
-            });
+            });*/
 
-            addUserInTable(jsonObj.user);
+            addUserInTable(jsonObj);
             },
         failure: function(errMsg){alert(errMsg);}
 
@@ -181,6 +181,6 @@ function addUserInTable(userData){
             "</td>" +
             "</tr>";
     });
-    console.log(userHTML);
+    //console.log(userHTML);
     userTable.innerHTML= userHTML;
 }

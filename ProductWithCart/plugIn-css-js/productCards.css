@@ -2,10 +2,10 @@
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,300);
 
 body{
-    height: 100%;
-    width: 100%;
+  margin: 0;
+  padding: 0;
     font-family: sans-serif;
-    background-image: linear-gradient(315deg, #ead7ec 0%, #f5dbf1 74%);
+    background-image: linear-gradient(315deg, #111877 50%, #111877 50%);
 }
 
 .badge-notify{
@@ -50,7 +50,7 @@ h1{
     color: white;
 }
 .titleText{
-  color:rgb(76, 34, 124);
+  color:#D7BE69;
   margin-top: 20%;
   font:normal 6rem/1 "Pinyon Script";
 }
@@ -102,7 +102,7 @@ h1{
   width: 100%;
   height: 25px;
   border-radius: 125px/12px;
-  box-shadow: 0 0 8px black;
+  box-shadow: 0 0 20px #D7BE69;
 }
 
 .h-divider .text {
@@ -142,8 +142,8 @@ h1{
   left: 50%;
   margin-left: -25px;
   border-radius: 100%;
-  box-shadow: 0 2px 4px #999;
-  background: white;
+  box-shadow: 0 2px 4px #D7BE69;
+  background: D7BE69;
 }
 
 .h-divider img {
@@ -151,12 +151,14 @@ h1{
   margin: 4px;
   max-width: 60px;
   border-radius: 100%;
-  border: 1px dashed #aaa;
+  border: 1px dashed #D7BE69;
+
 }
 
 
 .logo-small{
-    color: #7f5a83;
+    /*color: #C0C0C0;*/
+    color:#D7BE69;
     font-size: 50px;
     transform-style: preserve-3d;
     transform: rotateY(360deg) translateZ(310px);
@@ -166,7 +168,8 @@ h1{
 }
 .logo{
     font-size: 200px;
-    color:#7f5a83;
+    /*color: #C0C0C0;*/
+    color:#D7BE69;
     transform-style: preserve-3d;
     transform: rotateY(360deg) translateZ(360px);
     animation: animate 10s linear infinite;
@@ -230,7 +233,7 @@ h1{
     visibility: visible;
   }
  
-svg{
+/*svg{
   height: 200px;
   width: 100%;
 }
@@ -240,7 +243,7 @@ svg{
 
   .shape-fill{
     fill: url(#header-shape-gradient) #fff;
-  }
+  }*/
 
   @keyframes slide {
     0% {
@@ -403,7 +406,7 @@ footer ul li{
 }
 
 .adress span , .contact span , .info span{
-  color: #FFF; 
+  color:#D7BE69;
   font-weight: 800; 
   padding-bottom: 25px; 
   margin-bottom: 10px;
@@ -433,6 +436,7 @@ footer ul li{
    margin-right: 15px;
    font-size:14px;
 }
+
 
 @media screen  and(max-width: 768px) {
 

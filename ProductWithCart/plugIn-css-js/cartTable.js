@@ -129,6 +129,7 @@ function getSpecificProduct(id){
 function addProductToDetail(productData) {
   var productDetail = document.getElementById("productDetailView");
   var productHTML = "";
+  var productImage = "";
 
   productData.forEach((productInfo,index) =>{
           
@@ -141,10 +142,17 @@ function addProductToDetail(productData) {
         
         "<a href=\"../ProductWithCart/ProductPage.html\" class=\"btn btn-secondary btn-lg active\" role=\"button\"" +
         "aria-pressed=\"true\">Back to products</a></div>"
+
+        if(productInfo.image != "") {
+          productImage = productInfo.image;
+        }
   });
   
   productDetail.innerHTML= productHTML;
-  
+  var productDetailImg = document.getElementById("productDetailImage");
+  if(productImage != "") {
+    productDetailImg.src = "data:image/png;base64," + productImage;
+  }
 }
 
 function getAllProducts(){
@@ -166,17 +174,27 @@ function addProductInTable(productData){
     var productTable = document.getElementById("productCartView");
     productTable.innerHTML = "";
     var productHTML = "";
+    var addButton = "<button class=\"btn btn-danger\" onclick=\"location.href='../STANDARD/logIn.html';\">Add to cart</button>";
+    var productImage = "";
 
     productData.forEach((productInfo,index) =>{
-        
+      if(localStorage["login"] != "") {
+        addButton = "<button class=\"btn btn-danger my-cart-btn\" data-id=\"" + productInfo.id + " \" data-name=\"" + productInfo.productName + "\" data-summary=\"summary 1\" data-price=\"" + productInfo.productPrice + "\" data-quantity=\"1\" data-image=\"../img/index.jpg\">"+
+        "Add to cart</button>";
+      }  
+
+      if(productInfo.image != "") {
+        productImage = "<img src=\"data:image/png;base64," + productInfo.image + "\" width=\"250\" height=\"250\" alt=\"\">";
+      } else {
+        productImage = "<img src=\"../img/index.jpg\" width=\"250\" height=\"250\" alt=\"\">"
+      }
+
         productHTML=productHTML + "<div class=\"col-lg-3 col-md-4 col-sm-6 col-xs-12 text-center\">"+
-        "<img src=\"../img/index.jpg\" width=\"250\" height=\"250\" alt=\"\">"+
+        productImage +
         "<br><br>"+
         productInfo.productName + " - <strong>€ " + productInfo.productPrice + "</strong>"+
         "<br><br>"+
-        "<button class=\"btn btn-danger my-cart-btn\" data-id=\"" + productInfo.id + " \" data-name=\"" + productInfo.productName + "\" data-summary=\"summary 1\" data-price=\"" + productInfo.productPrice + "\" data-quantity=\"1\" data-image=\"../img/index.jpg\">"+
-            "Add to cart"+
-        "</button>"+
+        addButton +
         "<button class=\"btn btn-info\" onClick=\"detailsOfProduct(" + productInfo.id +")\">Details</button>" +
         /*"<a href=\"../ProductWithCart/productDetail.html\" id=\"link1\" class=\"btn btn-info\">Details</a>"+*/
         "</div>";
@@ -206,8 +224,10 @@ function detailsOfProduct(productId) {
 
 
 (function ($) {
-  
-  getCompleteShoppingCart();
+
+  if(localStorage["login"] != ""){
+    getCompleteShoppingCart();
+  }
 
     "use strict";
     
@@ -594,7 +614,10 @@ function detailsOfProduct(productId) {
     
     $.fn.myCart = function (userOptions) {
       OptionManager.loadOptions(userOptions);
-      loadMyCartEvent(this.selector);
+      var checkPage = document.getElementById("productDetail");
+      if(!(checkPage != null && checkPage.innerHTML.indexOf("productDetailView") >= -1)) {
+        loadMyCartEvent(this.selector);
+      }
       return this;
     };
     

@@ -11,7 +11,7 @@ function createAccount(){
         !email.includes(" ") && !password.includes(" "))) {
 
         var user = '{'
-            +'"id": 10,'
+            +'"id": 0,'
             +'"firstName":"' +firstName+'",'
             +'"lastName":"' +lastName+'",'
             +'"email":"' +email+'",'
@@ -27,10 +27,9 @@ function createAccount(){
             type:"POST",
             url:"http://localhost:8080/user/registration",
             data:user,
-            dataType:'json',
-            contentType:'application/json; charset=utf-8',
+            contentType:'application/json',
             success:function(data){
-
+console.log(data);
                 location.href = 'logIn.html';
             },
             failure: function(errMsg){alert(errMsg);}
