@@ -149,7 +149,7 @@ function addProductToDetail(productData) {
   productData.forEach((productInfo,index) =>{
           
     productHTML=productHTML + "<h2 class = \"product-title\">" + productInfo.productName + "</h2>" +
-        "<div class = \"product-price\"><p class = \"new-price\">New Price: <span>" + productInfo.productPrice + "</span></p></div>" +
+        "<div class = \"product-price\"><p class = \"new-price\">New Price: € <span>" + productInfo.productPrice + "</span></p></div>" +
         "<div class = \"product-detail\"><h2>about this item: </h2><p>" + productInfo.productDesc + "</p>" +
         "<div class = \"product-category\"><p>Category: <span>" + productInfo.productCategory + "</span></p></div> " +
         

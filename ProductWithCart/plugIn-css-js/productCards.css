@@ -285,17 +285,21 @@ h1{
   h2 {
     font-size: 24px;
     text-transform: uppercase;
-    color: black;
+    color:#D7BE69;
     font-weight: 600;
     margin-bottom: 30px;
   }
   
   h4 {
-    font-size: 19px;
+    font-size: 25px;
     line-height: 1.375em;
-    color: white;
+    color:#928d8d;
     font-weight: 400;
     margin-bottom: 30px;
+  }
+  p{
+    color:#030303;
+    font-size: 19px;
   }
   .slideanim {visibility:hidden;}
   .slide {

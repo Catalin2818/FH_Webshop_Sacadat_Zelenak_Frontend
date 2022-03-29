@@ -46,10 +46,10 @@ img{
     padding: 2rem 1rem;
 }
 .product-title{
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 700;
     position: relative;
-    color: #12263a;
+    color:#D7BE69;
     margin: 1rem 0;
 }
 .product-title::after{
@@ -68,7 +68,7 @@ img{
     font-weight: 700;
 }
 .product-price span{
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .new-price span{
