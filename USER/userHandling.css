@@ -13,44 +13,36 @@ body{
 
 #mainContainer{
     position: relative;
-    width: 100%;
+    width: auto;
 }
 
 .main{
-    /*position: absolute;
-    width: calc(100% - 60px);*/
-    /*left: 300px;*/
-
     min-height: 100vh;
     background: azure;
     transition: 0.5s;
 }
 
-.main.active{
-    /*width: calc(100% - 60px);
-    left: 60px;*/
-    width: 150%;
-    left: -15%;
-}
+
 
 .container .table {
-    /*width: 90%;*/
+    width: 100%;
 }
 
 .table {
-    background: #fff;
-    padding: 20px 25px;
-    margin: 30px 0;
+    background: rgb(255, 255, 255);
+    padding: 10px 25px;
+    margin: 50px 0;
     border-radius:1px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.247);
-
+    width: auto;
 }
+
 .table-title {
     padding-bottom: 15px;
-    background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+    background: linear-gradient(40deg, #a5bacc, #6783b6) !important;
     color: #fff;
     padding: 16px 30px;
-    margin: -20px -25px 10px;
+    margin: -10px -15px 10px;
     border-radius: 1px 1px 0 0;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.247);
 }
@@ -117,7 +109,7 @@ table.table td a {
     outline: none !important;
 }
 table.table td a:hover {
-    color: #2196F3;
+    color: #03070a;
 }
 table.table td a.edit {
     color: #FFC107;
@@ -133,38 +125,7 @@ table.table .avatar {
     vertical-align: middle;
     margin-right: 10px;
 }
-.pagination {
-    float: right;
-    margin: 0 0 5px;
-}
-.pagination li a {
-    border: none;
-    font-size: 13px;
-    min-width: 30px;
-    min-height: 30px;
-    color: #999;
-    margin: 0 2px;
-    line-height: 30px;
-    border-radius: 1px !important;
-    text-align: center;
-    padding: 0 6px;
-}
-.pagination li a:hover {
-    color: #666;
-}
-.pagination li.active a, .pagination li.active a.page-link {
-    background: #03A9F4;
-}
-.pagination li.active a:hover {
-    background: #0397d6;
-}
-.pagination li.disabled i {
-    color: #ccc;
-}
-.pagination li i {
-    font-size: 16px;
-    padding-top: 6px
-}
+
 .hint-text {
     float: left;
     margin-top: 10px;

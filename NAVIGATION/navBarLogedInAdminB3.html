@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<!--<nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -12,7 +12,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="../ProductWithCart/newIndex.html">Home</a></li>
             <li><a href="../ProductWithCart/ProductPage.html">Products Page</a></li>
-
+            
             <li>
             <a href="../PRODUCTS/product.html" class="nav-item nav-link">Edit Products</a>
             <a href="../USER/userHandling.html" class="nav-item nav-link">Edit Users</a>
@@ -25,5 +25,30 @@
               <li><a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
           </ul>
         </div>
+      </div>
+    </nav>-->
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <p class="logoText" style="color: #D7BE69;">HB</p>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="../ProductWithCart/newIndex.html">Home</a></li>
+          <li><a href="../ProductWithCart/ProductPage.html">Products Page</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dashboard
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="../PRODUCTS/product.html" class="nav-item nav-link">Edit Products</a></li>
+              <li><a href="../USER/userHandling.html" class="nav-item nav-link">Edit Users</a></li>
+              <li><a href="../SHOPPINGCART/shoppingCart.html" class="nav-item nav-link">Edit Shopping cart</a></li>
+              <li><a href="../Category/Category.html" class="nav-item nav-link">Edit Categories</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+      </ul>
       </div>
     </nav>
