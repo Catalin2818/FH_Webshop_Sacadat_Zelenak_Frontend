@@ -15,10 +15,10 @@ $(document).ready(function(){
 });
 
 function getCompleteShoppingCart() {
-  localStorage["__mycart"] = "[";
+  localStorage.setItem("__mycart", "[");
   $.ajax({async: false,  
     type:"GET",
-    url:"http://localhost:8080/cart/getUnfinishedShoppingCartOfUser/" + localStorage["userId"],
+    url:"http://localhost:8080/cart/getUnfinishedShoppingCartOfUser/" + localStorage.getItem("userId"),
     contentType: 'application/json; charset=utf-8',
     xhrFields:{
         withCredentials:true
@@ -30,7 +30,7 @@ function getCompleteShoppingCart() {
       });
 
     },
-    failure: function(errMsg){alert(errMsg);}
+    failure: function(errMsg){alert(errMsg);} //fehlermeldungen userfreundlicher machen
 
   })
 }
